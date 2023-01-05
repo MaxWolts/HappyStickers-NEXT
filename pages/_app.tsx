@@ -12,10 +12,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   // Aditional layout
   // Manejar errores - componentDidCatch
   return (
-
-
       <CartProvider>
         <Head>
+          <link rel="shortcut icon" href='@images/favicon.ico'></link>
           <title>HappyStickers</title>
         </Head>
         <Component {...pageProps} />
