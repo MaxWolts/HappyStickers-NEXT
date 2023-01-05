@@ -1,0 +1,7 @@
+.items {
+  padding: 3.2rem var(--global-padding-width);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 350px));
+  justify-content: center;
+  grid-gap: 1.6rem;
+}

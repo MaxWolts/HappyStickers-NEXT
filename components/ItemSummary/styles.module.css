@@ -1,0 +1,70 @@
+.container {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 370px));
+  margin: 14vh auto;
+  padding: 3%;
+  gap: 3.2rem;
+  max-width: 900px;
+  /* border: 1px solid var(--black); */
+}
+
+.item {
+  display: grid;
+  justify-items: center;
+}
+
+.image {
+  width: 220px;
+}
+
+.name {
+  width: fit-content;
+  padding: 1rem;
+  font-size: 3rem;
+  color: white;
+  border-radius: 5px;
+  background-color: var(--black);
+  box-shadow: 6px 6px 0px var(--principal-color);
+}
+
+.description, .description p, .description strong, .inputContainer, .inputContainer button {
+  font-size: 2rem;
+  margin-bottom: .8rem;
+}
+
+.inputContainer input {
+  width: 50%;
+  height: 4rem;
+  font-size: 2rem;
+}
+.inputContainer button {
+  padding: 0 1rem;
+  height: 4rem;
+  border: none;
+  color: var(--white);
+  background-color: var(--black);
+}
+.inputContainer button:hover {
+  background-color: var(--principal-color);
+  cursor: pointer;
+}
+
+.added {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  font-size: 3rem;
+  color: var(--white);
+  background-color: var(--black);
+  border-radius: 5px;
+}
+.added .icon {
+  height: 3rem;
+  width: 3rem;
+  color: rgb(96, 227, 96);
+}
+

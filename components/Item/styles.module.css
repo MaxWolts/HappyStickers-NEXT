@@ -1,0 +1,38 @@
+.item {
+  position: relative;
+  height: 250px;
+  /* width: 300px; */
+  border: 1px solid var(--black);
+  border-radius: 2px;
+}
+.image {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80%;
+  max-width: 90%;
+  width: auto;
+}
+.price, .name {
+  z-index: 1;
+  width: fit-content;
+  padding: 1rem;
+  background-color: var(--black);
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--white);
+  border-right: 4px solid var(--principal-color);
+}
+.name {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: max-content;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 6px 6px 0px var(--principal-color);
+}
+

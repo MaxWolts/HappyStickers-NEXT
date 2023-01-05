@@ -1,0 +1,61 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10rem var(--global-padding-width) 3.2rem;
+  min-height: 80vh;
+}
+.title {
+  font-size: 4rem;
+}
+.item {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 240px);
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  margin-top: 1.6rem;
+  border: 1px solid var(--black);
+  border-radius: 2px;
+}
+.item button {
+  background: none;
+  border: none;
+  padding: .8rem;
+  cursor: pointer;
+}
+.item .text {
+  justify-self: center;
+  align-self: center;
+  margin: .8rem;
+}
+.item .text .price{
+  text-align: center;
+}
+.item p, .item button {
+  font-size: 1.8rem;
+}
+.item .name {
+  font-size: 2.5rem;
+}
+.item button {
+  position: absolute;
+  right: 0;
+}
+.item .image {
+  height: 120px;
+  justify-self: center;
+}
+.without {
+  padding: 3.2rem;
+  font-size: 2.2rem;
+  border: 1px solid rgb(242, 189, 115);
+  background: rgb(249, 235, 179);
+}
+.total {
+  margin-top: 3.2rem;
+}
+.total p{
+  font-size: 3.2rem;
+}

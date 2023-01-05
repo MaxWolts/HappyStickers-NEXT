@@ -1,0 +1,34 @@
+.about {
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  justify-content: center;
+  height: 80vh;
+  background-color: var(--black);
+  margin-top: 6.6rem;
+}
+.image {
+  z-index: 0;
+  position: absolute;
+  bottom: 3;
+  height: 90vh;
+  width: auto;
+  opacity: .3;
+}
+.description {
+  z-index: 1;
+  max-width: 50rem;
+  padding: 0 var(--global-padding-width);
+  margin-top: 6.4rem;
+  font-size: 3.5rem;
+  color: var(--white);
+}
+.description h2{
+  font-size: 4.7rem;
+  margin-bottom: 1.6rem;
+}
+@media (min-width: 1000px) {
+  .image {
+    opacity: 1;
+  }
+}

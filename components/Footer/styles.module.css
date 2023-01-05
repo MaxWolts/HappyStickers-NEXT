@@ -1,0 +1,97 @@
+.footer {
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 3.2rem var(--global-padding-width);
+  background-color: var(--black);
+  color: var(--white);
+}
+.title {
+  z-index: 1;
+  font-size: 3vh;
+  align-self: center;
+}
+
+.title strong {
+  font-size: 3vh;
+  color: var(--principal-color);
+}
+.description {
+  z-index: 1;
+  margin-top: 1.6rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
+  grid-gap: 1.6rem;
+
+}
+.description p {
+  font-size: 2.2rem;
+}
+.description li {
+  position: relative;
+
+  width: fit-content;
+  margin-bottom: 1rem;
+  list-style: none;
+}
+.description a {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  font-size: 2.2rem;
+  color: var(--white);
+  text-decoration: none;
+}
+.description li:hover:after, .description button:hover {
+  width: 100%;
+}
+.description li a:hover, .description button:hover {
+  color: var(--principal-color);
+}
+.description button {
+  font-size: 2.2rem;
+  background: none;
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+}
+.icons {
+  font-size: 2.2rem;
+}
+.image {
+  z-index: 0;
+  position: absolute;
+  right: -50px;
+  top: -88px;
+  opacity: .3;
+}
+
+@media (min-width: 796px) {
+  .description {
+    justify-items: center;
+    justify-content: center;
+  }
+}
+@media (min-width: 1132px) {
+  .image {
+    opacity: 1;
+  }
+}
+
+.memeContainer {
+  z-index: 999;
+  position: fixed;
+  bottom: 0;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #161616b0;
+}
+.memeImage{
+  opacity: 1;
+  height: 50vh;
+  width: auto;
+}
