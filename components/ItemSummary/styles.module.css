@@ -34,21 +34,33 @@
   margin-bottom: .8rem;
 }
 
+.inputContainer {
+  display: flex;
+}
+
 .inputContainer input {
+  outline: none;
   width: 50%;
   height: 4rem;
   font-size: 2rem;
+  text-align: center;
 }
-.inputContainer button {
+.inputContainer button, .add {
   padding: 0 1rem;
   height: 4rem;
   border: none;
   color: var(--white);
   background-color: var(--black);
+  border-radius: 2px;
 }
-.inputContainer button:hover {
+.inputContainer button:hover, .add:hover {
   background-color: var(--principal-color);
   cursor: pointer;
+}
+.add {
+  padding: 8px 16px;
+  font-size: 2rem;
+
 }
 
 .added {
@@ -56,6 +68,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin-top: 1.5rem;
   padding: 1rem;
   font-size: 3rem;
   color: var(--white);
@@ -68,3 +81,12 @@
   color: rgb(96, 227, 96);
 }
 
+.more, .less {
+  display: flex;
+  align-items: center;
+}
+
+.more svg, .less svg {
+  color: var(--white);
+  width: 20px;
+}

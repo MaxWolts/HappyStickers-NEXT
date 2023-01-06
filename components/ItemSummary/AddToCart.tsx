@@ -60,18 +60,26 @@ const AddToCart = ({ product }: AddToCartProps) => {
   }
 
   const changeQuantity = (number:number) => {
-    if (number == 1 || quantity > 1 && number < 1)
+    if ((number == 1 && quantity < 25)|| quantity > 1 && number < 1)
       setQuantity(quantity + number)
   }
 
   return (
     <>
       <div className={styles.inputContainer}>
-        <input type="number" min={1} pattern="\d*" onChange={handleChange} value={quantity}/>
-        <button className={styles.less} onClick={()=>changeQuantity(-1)}>-</button>
-        <button className={styles.more} onClick={()=>changeQuantity(1)}>+</button>
-        <button className={styles.add} onClick={handleSubmit}>Añadir</button>
+        <button className={styles.less} onClick={()=>changeQuantity(-1)}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="#f9f9f9" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+          </svg>
+        </button>
+        <input type="number" min={1} max='25' pattern="\d*" onChange={handleChange} value={quantity} readOnly/>
+        <button className={styles.more} onClick={()=>changeQuantity(1)}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="#f9f9f9" className="w-6 h-6">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>
+        </button>
       </div>
+      <button className={styles.add} onClick={handleSubmit}>Añadir</button>
       {
       error && (
         <div style={{ color: 'red', position: 'absolute' }}>{error}</div>

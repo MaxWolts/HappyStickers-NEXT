@@ -6,14 +6,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 var(--global-padding-width);
-  /* height: 6.6rem; */
   height: 7vh;
+  min-height: 5rem;
   width: 100%;
   background-color: var(--black);
   border-bottom: 8px solid var(--principal-color);
 }
 .title a{
-  font-size: 2.3vh;
+  font-size: 2.3rem;
   color: var(--white);
 }
 .menu {
@@ -44,7 +44,7 @@
 }
 .right {
   display: flex;
-  align-self: center;
+  align-items: center;
   height: 100%;
 }
 .right .carrito, .right button {
