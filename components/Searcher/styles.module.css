@@ -8,8 +8,7 @@
   display: flex;
   width: 40vw;
   min-width: 300px;
-  /* margin: 0 auto; */
-  margin: 80px auto 32px;
+  margin: 110px auto 32px;
   border: 2px solid var(--black);
 }
 
@@ -32,7 +31,6 @@
   font-size: 2.2rem;
   outline: none;
 }
-
 
 .searcher:focus-within {
   outline: 3px solid var(--principal-color);

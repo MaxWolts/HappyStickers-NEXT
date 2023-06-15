@@ -8,6 +8,15 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false)
   const { count: cartCount } = useCart()
 
+  const menuHanddler = () => {
+    setOpenMenu(!openMenu)
+    if (!openMenu) {
+      document.body.classList.add('body-scroll-lock')
+    } else {
+      document.body.classList.remove('body-scroll-lock')
+    }
+  }
+
   return (
     <header className={styles.header}>
       <h1 className={styles.title}><Link href="/">HappyStickers</Link></h1>
@@ -20,11 +29,11 @@ const Header = () => {
               {cartCount >0 && <p className={styles.count}>{cartCount}</p>}
             </div>
           </Link>
-          <button className={styles.menu} onClick={()=>{setOpenMenu(true)}} aria-label="Menu">
+          <button className={styles.menu} onClick={menuHanddler} aria-label="Menu">
           </button>
       </div>
       {
-        openMenu && <Menu openMenu={openMenu} setOpenMenu={setOpenMenu}/>
+        openMenu && <Menu openMenu={openMenu} menuHanddler={menuHanddler}/>
       }
     </header>
   )
