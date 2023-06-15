@@ -1,0 +1,30 @@
+.marquee {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  height: 8vh;
+  width: 100%;
+  background-color: var(--black);
+  border-bottom: 2px solid var(--white);
+}
+.textContainer {
+  position: absolute;
+  width: max-content;
+  gap: 2rem;
+  display: flex;
+  animation: move 10s 0s linear infinite;
+}
+.text {
+  font-size: 5vh;
+  color: var(--white);
+  font-weight: 700;
+  display: inline-block;
+}
+
+
+@keyframes move {
+  to {
+    transform: translateX(-905px);
+  }
+}

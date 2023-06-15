@@ -11,7 +11,7 @@ class MyDocument extends Document {
           {/** scripts */}
 
         </Head>
-        <body className="my-body-class">
+        <body className="my-body-class" style={{maxWidth:"2220px", margin: "0 auto"}}>
           <Main />
           <NextScript />
         </body>
