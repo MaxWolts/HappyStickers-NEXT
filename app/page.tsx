@@ -11,8 +11,8 @@ const HERO_STICKER_NAMES = [
   'Psyduck',
   'Jinx',
   'Geralt',
-  'BAM!',
-  'Kazuma',
+  'Ahri',
+  'Syndra',
 ]
 
 const pickHeroStickers = (items: TItem[]): HeroSticker[] => {
