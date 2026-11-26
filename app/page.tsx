@@ -1,8 +1,10 @@
 import Layout from '@components/Layout/Layout'
 import Hero, { type HeroSticker } from '@components/Hero/Hero'
+import Featured from '@components/Featured/Featured'
 import Items from '@components/Items/Items'
 import DB from '@database'
 
+const FEATURED_ITEM_COUNT = 3
 const HERO_STICKER_COUNT = 7
 const HERO_FIRST_STICKER_INDEX = 4
 
@@ -29,10 +31,12 @@ const HomePage = async () => {
   const db = new DB()
   const itemList = await db.getAll()
   const heroStickers = pickHeroStickers(itemList)
+  const featuredItems = itemList.slice(0, FEATURED_ITEM_COUNT)
 
   return (
     <Layout>
       <Hero stickers={heroStickers} />
+      <Featured items={featuredItems} />
       <Items items={itemList} />
     </Layout>
   )
