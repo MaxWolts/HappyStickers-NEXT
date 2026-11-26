@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import Link from 'next/link'
-import Menu from '@components/Menu/Menu'
+import Menu, { MENU_ID } from '@components/Menu/Menu'
 import { useCart } from '@store/Cart'
 import styles from './style.module.css'
 
@@ -29,15 +29,18 @@ const describeCart = (cartCount: number) =>
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false)
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
   const { count: cartCount } = useCart()
 
-  const menuHanddler = () => {
-    setOpenMenu(!openMenu)
-    if (!openMenu) {
-      document.body.classList.add('body-scroll-lock')
-    } else {
-      document.body.classList.remove('body-scroll-lock')
-    }
+  const handleMenuOpen = () => {
+    setOpenMenu(true)
+    document.body.classList.add('body-scroll-lock')
+  }
+
+  const handleMenuClose = () => {
+    setOpenMenu(false)
+    document.body.classList.remove('body-scroll-lock')
+    menuButtonRef.current?.focus()
   }
 
   return (
@@ -67,16 +70,19 @@ const Header = () => {
           ) : null}
         </Link>
         <button
+          ref={menuButtonRef}
+          type="button"
           className={styles.menu}
-          onClick={menuHanddler}
+          onClick={handleMenuOpen}
           aria-label="Abrir menú"
           aria-expanded={openMenu}
+          aria-controls={MENU_ID}
         >
           <span className={styles.menuLine} />
           <span className={styles.menuLine} />
         </button>
       </div>
-      {openMenu ? <Menu menuHanddler={menuHanddler} /> : null}
+      <Menu open={openMenu} onClose={handleMenuClose} />
     </header>
   )
 }
