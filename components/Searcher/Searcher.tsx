@@ -1,25 +1,30 @@
 import styles from './styles.module.css'
 
-
 type SearcherProps = {
-  setDataSearcher: (value: string) => void
+  value: string
+  onSearchChange: (value: string) => void
 }
 
-const Searcher = ({ setDataSearcher }: SearcherProps) => {
-  const search = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setDataSearcher(event.target.value.toLowerCase())
+const Searcher = ({ value, onSearchChange }: SearcherProps) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    onSearchChange(event.target.value)
   }
+
   return (
-    <div className={`${styles.searcherContainer}`} id='search'>
-      <div className={styles.searcher}>
-          <input type="text" name="" id="" onChange={search} aria-label='ingresa lo que quieres buscar' placeholder='Buscar stickers...'/>
-          <button className="open-searcher" aria-label='buscar' >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
-            </svg>
-        </button>
-      </div>
-  </div>
+    <div className={styles.field}>
+      <label htmlFor="sticker-search" className={styles.label}>
+        Buscar stickers
+      </label>
+      <input
+        id="sticker-search"
+        type="search"
+        className={styles.input}
+        value={value}
+        onChange={handleChange}
+        placeholder="Pikachu, Jojos, Batman…"
+        autoComplete="off"
+      />
+    </div>
   )
 }
 
