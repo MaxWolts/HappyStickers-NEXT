@@ -233,7 +233,7 @@
   );
 }
 
-.imageFrame {
+.imageStage {
   display: none;
 }
 
@@ -275,16 +275,7 @@
   }
 
   .content {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 32rem);
-    grid-template-areas:
-      'top top'
-      'nav image';
-    column-gap: var(--space-7);
     padding-block: var(--space-5) var(--space-8);
-  }
-
-  .topBar {
-    grid-area: top;
   }
 
   .closeButton {
@@ -293,18 +284,26 @@
   }
 
   .nav {
-    grid-area: nav;
     align-self: center;
   }
 
+  .imageStage {
+    position: absolute;
+    inset: 0;
+    overflow: clip;
+    display: grid;
+    place-items: center end;
+    padding-right: 4vw;
+    pointer-events: none;
+  }
+
   .imageFrame {
-    grid-area: image;
-    align-self: center;
-    display: block;
-    border: 0.6rem solid var(--color-text);
+    width: min(44vw, 72svh);
+    border: 1rem solid var(--color-text);
     background-color: var(--color-surface);
-    box-shadow: 1.2rem -2rem 0 var(--color-accent);
+    box-shadow: 2rem -3rem 0 var(--color-accent);
     transform: rotate(6deg);
+    transform-origin: 23% 44%;
   }
 
   .image {

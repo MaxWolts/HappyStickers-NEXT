@@ -143,6 +143,19 @@ const MenuOverlay = ({ open, onClose }: MenuProps) => {
             },
             0.25,
           )
+          .from(
+            '[data-menu-image]',
+            {
+              opacity: 0,
+              rotation: 75,
+              xPercent: 35,
+              yPercent: 55,
+              scale: 0.8,
+              duration: 0.9,
+              ease: 'back.out(1.4)',
+            },
+            0.15,
+          )
 
         timelineRef.current = openTimeline
 
@@ -215,6 +228,11 @@ const MenuOverlay = ({ open, onClose }: MenuProps) => {
       <div className={styles.sweep} data-menu-sweep aria-hidden="true">
         <div className={styles.halftone} />
       </div>
+      <div className={styles.imageStage} aria-hidden="true">
+        <div className={styles.imageFrame} data-menu-image>
+          <Image src={menuImage} alt="" className={styles.image} />
+        </div>
+      </div>
 
       <div className={styles.content}>
         <div className={styles.topBar}>
@@ -257,10 +275,6 @@ const MenuOverlay = ({ open, onClose }: MenuProps) => {
             ))}
           </ul>
         </nav>
-
-        <div className={styles.imageFrame} data-menu-pop>
-          <Image src={menuImage} alt="" className={styles.image} />
-        </div>
       </div>
     </div>
   )
