@@ -14,6 +14,21 @@ type LayoutSnapshot = {
   flipState: Flip.FlipState | null
 }
 
+const isMotionAllowed = () => window.matchMedia(motionAllowedQuery).matches
+
+const fadeInEnteringItems = (enteringElements: Element[]) =>
+  gsap.fromTo(
+    enteringElements,
+    { autoAlpha: 0, scale: 0.9 },
+    {
+      autoAlpha: 1,
+      scale: 1,
+      duration: 0.4,
+      ease: 'power2.out',
+      clearProps: 'opacity,visibility',
+    },
+  )
+
 const FlipGrid = ({ children, layoutKey, className }: FlipGridProps) => {
   const [gridElement, setGridElement] = useState<HTMLDivElement | null>(null)
   const [snapshot, setSnapshot] = useState<LayoutSnapshot>({
@@ -30,33 +45,21 @@ const FlipGrid = ({ children, layoutKey, className }: FlipGridProps) => {
 
   useGSAP(
     () => {
-      if (!gridElement || !snapshot.flipState) {
+      if (!gridElement || !snapshot.flipState || !isMotionAllowed()) {
         return
       }
 
-      const motionMedia = gsap.matchMedia()
-
-      motionMedia.add(motionAllowedQuery, () => {
-        Flip.from(snapshot.flipState, {
-          targets: gridElement.children,
-          duration: 0.5,
-          ease: 'power2.inOut',
-          scale: true,
-          onEnter: (enteringElements) =>
-            gsap.fromTo(
-              enteringElements,
-              { autoAlpha: 0, scale: 0.9 },
-              { autoAlpha: 1, scale: 1, duration: 0.4, ease: 'power2.out' },
-            ),
-        })
+      Flip.from(snapshot.flipState, {
+        targets: gridElement.children,
+        duration: 0.5,
+        ease: 'power2.inOut',
+        scale: true,
+        onEnter: fadeInEnteringItems,
       })
-
-      return () => motionMedia.revert()
     },
     {
       scope: gridElement,
       dependencies: [snapshot, gridElement],
-      revertOnUpdate: true,
     },
   )
 
