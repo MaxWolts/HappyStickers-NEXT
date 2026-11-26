@@ -19,7 +19,7 @@
 .name {
   z-index: 1;
   width: fit-content;
-  padding: 0.625rem;
+  padding: 1rem;
   background-color: var(--color-bg);
   font-size: var(--text-lg);
   font-weight: bold;

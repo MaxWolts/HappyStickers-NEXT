@@ -16,15 +16,15 @@
 }
 .description {
   z-index: 1;
-  max-width: 31.25rem;
+  max-width: 50rem;
   padding: 0 var(--space-gutter);
-  margin-top: 4rem;
+  margin-top: 6.4rem;
   font-size: var(--text-xl);
   color: var(--color-text);
 }
 .description h2 {
-  font-size: 2.938rem;
-  margin-bottom: 1rem;
+  font-size: 4.7rem;
+  margin-bottom: 1.6rem;
 }
 @media (min-width: 1000px) {
   .image {

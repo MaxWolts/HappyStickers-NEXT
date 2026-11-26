@@ -5,7 +5,7 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 370px));
   margin: 14vh auto;
   padding: 3%;
-  gap: 2rem;
+  gap: 3.2rem;
   max-width: 900px;
   /* border: 1px solid var(--color-bg); */
 }
@@ -21,7 +21,7 @@
 
 .name {
   width: fit-content;
-  padding: 0.625rem;
+  padding: 1rem;
   font-size: var(--text-lg);
   color: var(--color-text);
   border-radius: 5px;
@@ -34,8 +34,8 @@
 .description strong,
 .inputContainer,
 .inputContainer button {
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  margin-bottom: 0.8rem;
 }
 
 .inputContainer {
@@ -45,14 +45,14 @@
 .inputContainer input {
   outline: none;
   width: 50%;
-  height: 2.5rem;
-  font-size: 1.25rem;
+  height: 4rem;
+  font-size: 2rem;
   text-align: center;
 }
 .inputContainer button,
 .add {
-  padding: 0 0.625rem;
-  height: 2.5rem;
+  padding: 0 1rem;
+  height: 4rem;
   border: none;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -65,24 +65,24 @@
 }
 .add {
   padding: 8px 16px;
-  font-size: 1.25rem;
+  font-size: 2rem;
 }
 
 .added {
   position: absolute;
   display: flex;
   align-items: center;
-  gap: 0.625rem;
-  margin-top: 0.938rem;
-  padding: 0.625rem;
-  font-size: 1.875rem;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 1rem;
+  font-size: 3rem;
   color: var(--color-text);
   background-color: var(--color-bg);
   border-radius: 5px;
 }
 .added .icon {
-  height: 1.875rem;
-  width: 1.875rem;
+  height: 3rem;
+  width: 3rem;
   color: rgb(96, 227, 96);
 }
 

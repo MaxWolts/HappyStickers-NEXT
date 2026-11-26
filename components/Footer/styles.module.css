@@ -3,7 +3,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 2rem var(--space-gutter);
+  padding: 3.2rem var(--space-gutter);
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -19,26 +19,26 @@
 }
 .description {
   z-index: 1;
-  margin-top: 1rem;
+  margin-top: 1.6rem;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
-  grid-gap: 1rem;
+  grid-gap: 1.6rem;
 }
 .description p {
-  font-size: 1.375rem;
+  font-size: 2.2rem;
 }
 .description li {
   position: relative;
 
   width: fit-content;
-  margin-bottom: 0.625rem;
+  margin-bottom: 1rem;
   list-style: none;
 }
 .description a {
   display: flex;
-  gap: 0.625rem;
+  gap: 1rem;
   align-items: center;
-  font-size: 1.375rem;
+  font-size: 2.2rem;
   color: var(--color-text);
   text-decoration: none;
 }
@@ -51,14 +51,14 @@
   color: var(--color-accent);
 }
 .description button {
-  font-size: 1.375rem;
+  font-size: 2.2rem;
   background: none;
   color: var(--color-text);
   border: none;
   cursor: pointer;
 }
 .icons {
-  font-size: 1.375rem;
+  font-size: 2.2rem;
 }
 .image {
   z-index: 0;

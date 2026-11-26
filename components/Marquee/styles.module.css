@@ -11,7 +11,7 @@
 .textContainer {
   position: absolute;
   width: max-content;
-  gap: 1.25rem;
+  gap: 2rem;
   display: flex;
   animation: move 10s 0s linear infinite;
 }

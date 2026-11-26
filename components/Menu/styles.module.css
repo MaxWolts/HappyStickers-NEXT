@@ -9,7 +9,7 @@
   height: 100vh;
   width: 100vw;
   max-width: 2220px;
-  font-size: 3.75rem;
+  font-size: 6rem;
   background-color: var(--color-bg);
   color: var(--color-text);
 }
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   list-style: none;
-  gap: 1.875rem;
+  gap: 3rem;
   opacity: 0;
   animation: appear 1s 0s linear forwards;
 }
@@ -29,8 +29,8 @@
 .link {
   position: relative;
   width: fit-content;
-  margin-top: 1rem;
-  font-size: clamp(3.125rem, 6.5vw, 16vh);
+  margin-top: 1.6rem;
+  font-size: clamp(5rem, 6.5vw, 16vh);
   font-weight: bold;
   color: var(--color-text);
   text-decoration: none;
@@ -40,7 +40,7 @@
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0.625rem;
+  bottom: 1rem;
   width: 100%;
   height: 75%;
   transform-origin: center;
@@ -131,10 +131,10 @@
   .links {
     bottom: 15vh;
     text-align: right;
-    gap: 3.125rem;
+    gap: 5rem;
   }
   .link {
-    font-size: clamp(4.375rem, 6.5vw, 16vh);
+    font-size: clamp(7rem, 6.5vw, 16vh);
   }
   .topLink {
     position: relative;
@@ -148,8 +148,8 @@
   }
   .bottomLink {
     position: relative;
-    bottom: 1.25rem;
-    left: -1.875rem;
+    bottom: 2rem;
+    left: -3rem;
     transform-origin: right;
     transform: rotate(5deg);
   }

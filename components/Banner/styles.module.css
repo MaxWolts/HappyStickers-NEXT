@@ -11,6 +11,7 @@
 .texts {
   position: absolute;
   left: 0;
+  max-width: 100%;
   margin-top: 32px;
   z-index: 1;
   font-size: var(--text-lg);
@@ -19,7 +20,7 @@
 }
 .texts strong {
   display: block;
-  font-size: 2.938rem;
+  font-size: 4.7rem;
   color: var(--color-text);
   margin-bottom: 32px;
 }
@@ -28,7 +29,7 @@
   background-color: var(--color-accent);
   padding: 10px;
   border-radius: 2px;
-  font-size: 1.875rem;
+  font-size: 3rem;
 }
 
 .image {
@@ -42,10 +43,27 @@
 
 @media (min-width: 954px) {
   .texts {
-    max-width: 39.375rem;
+    max-width: 63rem;
   }
   .image {
     opacity: 1;
     height: 60vw;
+  }
+}
+
+@media (max-width: 953px) {
+  .banner {
+    height: auto;
+    min-height: 93vh;
+  }
+  .texts {
+    position: relative;
+    margin-right: auto;
+  }
+  .image {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100%;
   }
 }
