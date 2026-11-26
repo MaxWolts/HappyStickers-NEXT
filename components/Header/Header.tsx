@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import Link from 'next/link'
+import CutoutLetters from '@components/CutoutLetters/CutoutLetters'
 import Menu, { MENU_ID } from '@components/Menu/Menu'
 import { useCart } from '@store/Cart'
 import styles from './style.module.css'
@@ -45,8 +46,8 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo}>
-        HappyStickers
+      <Link href="/" className={styles.logo} aria-label="HappyStickers">
+        <CutoutLetters text="HappyStickers" className={styles.logoLetters} />
       </Link>
       <nav className={styles.nav} aria-label="Principal">
         <Link href="/#catalogo" className={styles.navLink}>
