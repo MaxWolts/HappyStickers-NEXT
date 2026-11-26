@@ -1,15 +1,11 @@
 'use client'
 
 import { useRef } from 'react'
-import { gsap, useGSAP, ScrollTrigger, motionAllowedQuery } from '@lib/gsap'
+import { gsap, useGSAP, motionAllowedQuery } from '@lib/gsap'
 import styles from './styles.module.css'
 
 const REPEATS_PER_GROUP = 4
 const SECONDS_PER_GROUP = 18
-const MAX_SCROLL_BOOST = 1.5
-const VELOCITY_PER_BOOST_STEP = 1500
-const SPEED_UP_SECONDS = 0.4
-const SLOW_DOWN_SECONDS = 0.8
 
 type MarqueeProps = {
   text: string
@@ -53,37 +49,11 @@ const Marquee = ({ text }: MarqueeProps) => {
       const motionMedia = gsap.matchMedia()
 
       motionMedia.add(motionAllowedQuery, () => {
-        const loop = gsap.to(trackRef.current, {
+        gsap.to(trackRef.current, {
           xPercent: -50,
           duration: SECONDS_PER_GROUP,
           ease: 'none',
           repeat: -1,
-        })
-
-        const clampBoost = gsap.utils.clamp(0, MAX_SCROLL_BOOST)
-        let speedChange: gsap.core.Timeline | null = null
-
-        ScrollTrigger.create({
-          trigger: marqueeRef.current,
-          start: 'top bottom',
-          end: 'bottom top',
-          onUpdate: (self) => {
-            const scrollSpeed = Math.abs(self.getVelocity())
-            const boost = clampBoost(scrollSpeed / VELOCITY_PER_BOOST_STEP)
-            speedChange?.kill()
-            speedChange = gsap
-              .timeline()
-              .to(loop, {
-                timeScale: 1 + boost,
-                duration: SPEED_UP_SECONDS,
-                ease: 'power2.out',
-              })
-              .to(loop, {
-                timeScale: 1,
-                duration: SLOW_DOWN_SECONDS,
-                ease: 'power1.inOut',
-              })
-          },
         })
       })
 
