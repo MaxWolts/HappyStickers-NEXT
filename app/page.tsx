@@ -5,23 +5,24 @@ import Items from '@components/Items/Items'
 import DB from '@database'
 
 const FEATURED_ITEM_COUNT = 3
-const HERO_STICKER_COUNT = 7
-const HERO_FIRST_STICKER_INDEX = 4
+const HERO_STICKER_NAMES = [
+  'Pikachu :o',
+  'Pucca',
+  'Psyduck',
+  'Jinx',
+  'Geralt',
+  'BAM!',
+  'Kazuma',
+]
 
 const pickHeroStickers = (items: TItem[]): HeroSticker[] => {
-  const spacing = Math.max(
-    1,
-    Math.floor((items.length - HERO_FIRST_STICKER_INDEX) / HERO_STICKER_COUNT),
-  )
   const heroStickers: HeroSticker[] = []
 
-  for (
-    let index = HERO_FIRST_STICKER_INDEX;
-    index < items.length && heroStickers.length < HERO_STICKER_COUNT;
-    index += spacing
-  ) {
-    const { id, name, image } = items[index]
-    heroStickers.push({ id, name, image })
+  for (const stickerName of HERO_STICKER_NAMES) {
+    const item = items.find((candidate) => candidate.name === stickerName)
+    if (item) {
+      heroStickers.push({ id: item.id, name: item.name, image: item.image })
+    }
   }
 
   return heroStickers
