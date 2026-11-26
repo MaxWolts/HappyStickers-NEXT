@@ -9,9 +9,7 @@
   background-color: var(--color-surface);
   border: 2px solid var(--color-text);
   box-shadow: 0.6rem 0.6rem 0 #000;
-  transition:
-    translate 0.2s ease-out,
-    box-shadow 0.2s ease-out;
+  transition: box-shadow 0.2s ease-out;
 }
 
 .card::before {
@@ -37,15 +35,17 @@
 }
 
 .sticker {
-  --peel: 8;
-  position: relative;
+  z-index: 2;
   aspect-ratio: 1;
   margin: var(--space-2);
-  overflow: clip;
+  border-radius: var(--radius-lg);
   rotate: -2deg;
 }
 
-.face {
+.stickerLink {
+  position: relative;
+  display: block;
+  height: 100%;
   background-color: var(--color-bg);
   border: 0.6rem solid var(--color-text);
   border-radius: var(--radius-lg);
@@ -54,14 +54,6 @@
 .image {
   padding: 10%;
   object-fit: contain;
-}
-
-.flapShadow {
-  filter: drop-shadow(-0.4rem -0.4rem 0.4rem rgb(0 0 0 / 0.5));
-}
-
-.flap {
-  border-radius: var(--radius-lg);
 }
 
 .details {
@@ -116,28 +108,12 @@
 
 @media (hover: hover) and (pointer: fine) {
   .card:hover {
-    translate: 0 -0.4rem;
-    box-shadow: 0.6rem 1rem 0 #000;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .sticker {
-    transition: --peel 0.35s ease-out;
-  }
-
-  .card:hover .sticker,
-  .card:focus-within .sticker {
-    --peel: 24;
+    box-shadow: 0.8rem 0.8rem 0 #000;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .card {
     transition: none;
-  }
-
-  .card:hover {
-    translate: none;
   }
 }
