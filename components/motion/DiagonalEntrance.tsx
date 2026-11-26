@@ -6,31 +6,36 @@ import { gsap, useGSAP, motionAllowedQuery } from '@lib/gsap'
 const HIDDEN_SWEEP = 'polygon(0% 0%, 0% 0%, -30% 100%, -30% 100%)'
 const VISIBLE_SWEEP = 'polygon(0% 0%, 130% 0%, 100% 100%, -30% 100%)'
 
-type ItemSummaryMotionProps = {
+type DiagonalEntranceProps = {
   children: React.ReactNode
   className?: string
 }
 
-const ItemSummaryMotion = ({ children, className }: ItemSummaryMotionProps) => {
-  const summaryRef = useRef<HTMLDivElement>(null)
+const DiagonalEntrance = ({ children, className }: DiagonalEntranceProps) => {
+  const entranceRef = useRef<HTMLDivElement>(null)
 
   useGSAP(
     () => {
       const motionMedia = gsap.matchMedia()
 
       motionMedia.add(motionAllowedQuery, () => {
+        const popElements = gsap.utils.toArray<HTMLElement>(
+          '[data-entrance-pop]',
+          entranceRef.current,
+        )
+
         const introTimeline = gsap.timeline({
           defaults: { ease: 'power4.out' },
         })
 
         introTimeline
           .fromTo(
-            '[data-summary-sweep]',
+            '[data-entrance-sweep]',
             { clipPath: HIDDEN_SWEEP },
             { clipPath: VISIBLE_SWEEP, duration: 0.5, stagger: 0.15 },
           )
           .from(
-            '[data-summary-image]',
+            '[data-entrance-drop]',
             {
               autoAlpha: 0,
               y: -80,
@@ -52,8 +57,10 @@ const ItemSummaryMotion = ({ children, className }: ItemSummaryMotionProps) => {
             },
             0.3,
           )
-          .from(
-            '[data-summary-price]',
+
+        if (popElements.length > 0) {
+          introTimeline.from(
+            popElements,
             {
               autoAlpha: 0,
               scale: 1.6,
@@ -62,23 +69,25 @@ const ItemSummaryMotion = ({ children, className }: ItemSummaryMotionProps) => {
             },
             '-=0.2',
           )
-          .from(
-            '[data-summary-fade]',
-            { autoAlpha: 0, y: 24, duration: 0.6, stagger: 0.08 },
-            '-=0.2',
-          )
+        }
+
+        introTimeline.from(
+          '[data-entrance-fade]',
+          { autoAlpha: 0, y: 24, duration: 0.6, stagger: 0.08 },
+          '-=0.2',
+        )
       })
 
       return () => motionMedia.revert()
     },
-    { scope: summaryRef },
+    { scope: entranceRef },
   )
 
   return (
-    <div ref={summaryRef} className={className}>
+    <div ref={entranceRef} className={className}>
       {children}
     </div>
   )
 }
 
-export default ItemSummaryMotion
+export default DiagonalEntrance

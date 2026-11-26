@@ -91,7 +91,7 @@ const AddToCart = ({ product }: AddToCartProps) => {
   }
 
   return (
-    <div className={styles.purchase} data-summary-fade>
+    <div className={styles.purchase} data-entrance-fade>
       <div className={styles.stepper}>
         <button
           type="button"
