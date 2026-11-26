@@ -1,5 +1,6 @@
 .crossed {
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   overflow: clip;
   --marquee-padding: var(--space-9);
 }
