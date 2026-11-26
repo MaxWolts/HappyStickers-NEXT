@@ -1,5 +1,7 @@
 .catalog {
   scroll-margin-top: 12rem;
+  min-height: 100vh;
+  min-height: 100svh;
   padding: var(--space-8) var(--space-gutter) var(--space-9);
 }
 
