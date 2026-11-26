@@ -21,6 +21,36 @@ const validate = (quantity: number) => {
   return error
 }
 
+const MinusIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth={2.2}
+    stroke="currentColor"
+    className={styles.stepIcon}
+    aria-hidden="true"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+  </svg>
+)
+
+const PlusIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth={2.2}
+    stroke="currentColor"
+    className={styles.stepIcon}
+    aria-hidden="true"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 4.5v15m7.5-7.5h-15"
+    />
+  </svg>
+)
+
 const AddToCart = ({ product }: AddToCartProps) => {
   const [error, setError] = useState('')
   const [quantity, setQuantity] = useState(1)
@@ -60,21 +90,22 @@ const AddToCart = ({ product }: AddToCartProps) => {
   }
 
   return (
-    <>
-      <div className={styles.inputContainer}>
-        <button className={styles.less} onClick={() => changeQuantity(-1)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2.2}
-            stroke="#f9f9f9"
-            className="w-6 h-6"
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
-          </svg>
+    <div className={styles.purchase} data-summary-fade>
+      <div className={styles.stepper}>
+        <button
+          type="button"
+          className={styles.step}
+          onClick={() => changeQuantity(-1)}
+          aria-label="Quitar uno"
+        >
+          <MinusIcon />
         </button>
+        <label htmlFor="item-quantity" className={styles.visuallyHidden}>
+          Cantidad
+        </label>
         <input
+          id="item-quantity"
+          className={styles.quantity}
           type="number"
           min={1}
           max="25"
@@ -83,36 +114,31 @@ const AddToCart = ({ product }: AddToCartProps) => {
           value={quantity}
           readOnly
         />
-        <button className={styles.more} onClick={() => changeQuantity(1)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={2.2}
-            stroke="#f9f9f9"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M12 4.5v15m7.5-7.5h-15"
-            />
-          </svg>
+        <button
+          type="button"
+          className={styles.step}
+          onClick={() => changeQuantity(1)}
+          aria-label="Añadir uno"
+        >
+          <PlusIcon />
         </button>
       </div>
-      <button className={styles.add} onClick={handleSubmit}>
-        Añadir
+      <button type="button" className={styles.add} onClick={handleSubmit}>
+        <span className={styles.addLabel}>Añadir</span>
       </button>
-      {error ? (
-        <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
-      ) : null}
-      {visible ? (
-        <div className={styles.added}>
-          Añadido
-          <AiFillCheckCircle className={styles.icon} />
-        </div>
-      ) : null}
-    </>
+      <div className={styles.feedback} aria-live="polite">
+        {error ? <p className={styles.error}>{error}</p> : null}
+        {visible ? (
+          <p className={styles.added}>
+            Añadido
+            <AiFillCheckCircle
+              className={styles.addedIcon}
+              aria-hidden="true"
+            />
+          </p>
+        ) : null}
+      </div>
+    </div>
   )
 }
 
