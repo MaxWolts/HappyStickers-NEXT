@@ -34,11 +34,7 @@
   position: relative;
   width: 100%;
   max-width: 32rem;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-2);
-  transition:
-    transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.35s;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .stackItem:nth-child(odd) {
@@ -57,7 +53,6 @@
 .stackItem:focus-within {
   z-index: 4;
   transform: translateY(-1.2rem) rotate(0deg) scale(1.02);
-  box-shadow: var(--shadow-3);
 }
 
 @media (min-width: 720px) {
@@ -86,7 +81,6 @@
   .stackItem:nth-child(2) {
     z-index: 3;
     transform: none;
-    box-shadow: var(--shadow-3);
   }
 
   .stackItem:nth-child(3) {
@@ -98,7 +92,6 @@
   .stackItem:focus-within {
     z-index: 4;
     transform: translateY(-1.6rem) rotate(0deg) scale(1.02);
-    box-shadow: 0 30px 70px rgb(0 0 0 / 0.6);
   }
 }
 

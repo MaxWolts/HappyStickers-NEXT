@@ -5,7 +5,6 @@ import Item from '@components/Item/Item'
 import Searcher from '@components/Searcher/Searcher'
 import FlipGrid from '@components/motion/FlipGrid'
 import Reveal from '@components/motion/Reveal'
-import Tilt from '@components/motion/Tilt'
 import styles from './styles.module.css'
 
 type SortOrder = 'catalog' | 'name'
@@ -97,9 +96,7 @@ function Items({ items }: ItemListProps) {
           className={styles.grid}
         >
           {visibleItems.map((item) => (
-            <Tilt key={item.id} className={styles.tilt}>
-              <Item item={item} imageSizes={CARD_IMAGE_SIZES} />
-            </Tilt>
+            <Item key={item.id} item={item} imageSizes={CARD_IMAGE_SIZES} />
           ))}
         </FlipGrid>
       </Reveal>

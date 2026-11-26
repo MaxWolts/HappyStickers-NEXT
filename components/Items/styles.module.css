@@ -65,10 +65,6 @@
   gap: var(--space-3);
 }
 
-.tilt {
-  border-radius: var(--radius-lg);
-}
-
 @media (min-width: 720px) {
   .toolbar {
     grid-template-columns: minmax(0, 1fr) 24rem;

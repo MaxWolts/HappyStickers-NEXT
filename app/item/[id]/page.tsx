@@ -4,7 +4,6 @@ import Layout from '@components/Layout/Layout'
 import ItemSummary from '@components/ItemSummary/ItemSummary'
 import Item from '@components/Item/Item'
 import Reveal from '@components/motion/Reveal'
-import Tilt from '@components/motion/Tilt'
 import DB from '@database'
 import styles from './styles.module.css'
 
@@ -74,9 +73,11 @@ const ItemPage = async ({ params }: ItemPageProps) => {
         </h2>
         <Reveal stagger={0.08} className={styles.grid}>
           {relatedItems.map((relatedItem) => (
-            <Tilt key={relatedItem.id} className={styles.tilt}>
-              <Item item={relatedItem} imageSizes={RELATED_IMAGE_SIZES} />
-            </Tilt>
+            <Item
+              key={relatedItem.id}
+              item={relatedItem}
+              imageSizes={RELATED_IMAGE_SIZES}
+            />
           ))}
         </Reveal>
       </section>

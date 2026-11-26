@@ -15,10 +15,6 @@
   gap: var(--space-3);
 }
 
-.tilt {
-  border-radius: var(--radius-lg);
-}
-
 @media (min-width: 720px) {
   .grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import AddToCartButton from '@components/AddToCartButton/AddToCartButton'
+import foldStyles from '@components/PeelSticker/fold.module.css'
 import { formatPrice } from '@lib/formatPrice'
 import styles from './styles.module.css'
 
@@ -16,14 +17,22 @@ const Item = ({ item, imageSizes, className }: ItemProps) => {
 
   return (
     <article className={cardClassName}>
-      <div className={styles.imagePanel}>
-        <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          sizes={imageSizes}
-          className={styles.image}
-        />
+      <div className={styles.sticker}>
+        <div className={`${foldStyles.face} ${styles.face}`}>
+          <Image
+            src={item.image}
+            alt={item.name}
+            fill
+            sizes={imageSizes}
+            className={styles.image}
+          />
+        </div>
+        <div
+          className={`${foldStyles.flapShadow} ${styles.flapShadow}`}
+          aria-hidden="true"
+        >
+          <div className={`${foldStyles.flap} ${styles.flap}`} />
+        </div>
       </div>
       <div className={styles.details}>
         <h3 className={styles.name}>
