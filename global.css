@@ -14,6 +14,10 @@
 html {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+body {
+  max-width: 2220px;
+  margin: 0 auto;
+}
 .body-scroll-lock {
   height: 100%;
   overflow: hidden;

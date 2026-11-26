@@ -16,7 +16,7 @@ type RootLayoutProps = {
 const RootLayout = ({ children }: RootLayoutProps) => {
   return (
     <html lang="es">
-      <body className="my-body-class" style={{ maxWidth: '2220px', margin: '0 auto' }}>
+      <body>
         <Providers>{children}</Providers>
       </body>
     </html>
