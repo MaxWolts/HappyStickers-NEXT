@@ -61,6 +61,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
   min-height: 5.2rem;
   padding: 0 var(--space-6);
   font-weight: 600;
@@ -131,6 +132,12 @@
 
 .frontLayer .stickerImage {
   filter: drop-shadow(0 24px 28px rgb(0 0 0 / 0.65));
+}
+
+@media (min-width: 720px) {
+  .primaryAction {
+    width: auto;
+  }
 }
 
 @media (min-width: 960px) {
