@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react'
 import Image from 'next/image'
 import { gsap, useGSAP, Draggable, motionAllowedQuery } from '@lib/gsap'
+import foldStyles from './fold.module.css'
 import styles from './styles.module.css'
 
 const RESTING_PEEL = 16
@@ -167,7 +168,7 @@ const PeelSticker = ({ src, alt, sizes }: PeelStickerProps) => {
     <div ref={rootRef} className={styles.peel}>
       <div className={styles.frame} data-peel-entrance>
         <div ref={stickerRef} className={styles.sticker}>
-          <div className={styles.face}>
+          <div className={`${foldStyles.face} ${styles.face}`}>
             <Image
               src={src}
               alt={alt}
@@ -177,8 +178,11 @@ const PeelSticker = ({ src, alt, sizes }: PeelStickerProps) => {
               className={styles.image}
             />
           </div>
-          <div className={styles.flapShadow} aria-hidden="true">
-            <div className={styles.flap} />
+          <div
+            className={`${foldStyles.flapShadow} ${styles.flapShadow}`}
+            aria-hidden="true"
+          >
+            <div className={`${foldStyles.flap} ${styles.flap}`} />
           </div>
           <span ref={handleRef} className={styles.handle} aria-hidden="true" />
         </div>
