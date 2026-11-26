@@ -5,74 +5,75 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 var(--global-padding-width);
+  padding: 0 var(--space-gutter);
   height: 7vh;
-  min-height: 5rem;
+  min-height: 3.125rem;
   width: 100%;
-  background-color: var(--black);
-  border-bottom: 8px solid var(--principal-color);
+  background-color: var(--color-bg);
+  border-bottom: 8px solid var(--color-accent);
 }
-.title a{
-  font-size: 2.3rem;
-  color: var(--white);
+.title a {
+  font-size: 1.438rem;
+  color: var(--color-text);
 }
 .menu {
   z-index: 0;
   position: relative;
   height: 29px;
-  width: 3rem;
+  width: 1.875rem;
 }
 .menu:after {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   height: 2px;
   width: 100%;
   margin-bottom: 30%;
-  background-color: var(--white);
+  background-color: var(--color-text);
 }
 .menu:before {
-  content: "";
+  content: '';
   top: 0;
   left: 0;
   position: absolute;
   height: 2px;
   width: 100%;
   margin-top: 30%;
-  background-color: var(--white);
+  background-color: var(--color-text);
 }
 .right {
   display: flex;
   align-items: center;
   height: 100%;
 }
-.right .carrito, .right button {
-  width: 2.8rem;
-  margin: 1rem;
-  background-color: var(--black);
-  border: 1px solid white;
+.right .carrito,
+.right button {
+  width: 1.75rem;
+  margin: 0.625rem;
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-text);
   border: none;
   cursor: pointer;
 }
-.right path{
-  color: var(--white);
+.right path {
+  color: var(--color-text);
 }
 .right p {
-  color: white;
-  font-size: 3rem;
+  color: var(--color-text);
+  font-size: 1.875rem;
 }
 .carrito {
   position: relative;
 }
 .carrito .count {
   position: absolute;
-  top: -.5rem;
-  right: -.5rem;
-  height: 1.8rem;
-  min-width: 2rem;
+  top: -0.313rem;
+  right: -0.313rem;
+  height: 1.125rem;
+  min-width: 1.25rem;
   width: fit-content;
-  font-size: 1.4rem;
+  font-size: 0.875rem;
   text-align: center;
   border-radius: 50%;
   background-color: red;
@@ -82,6 +83,6 @@
   .searcherButtonClose {
     position: absolute;
     right: 0;
-    margin-right: calc(var(--global-padding-width) + 56px + 28px + 15px);
+    margin-right: calc(var(--space-gutter) + 56px + 28px + 15px);
   }
 }

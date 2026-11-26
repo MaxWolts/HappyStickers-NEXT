@@ -1,7 +1,6 @@
 .searcherContainer {
   display: flex;
   width: 100%;
-
 }
 
 .searcher {
@@ -9,44 +8,44 @@
   width: 40vw;
   min-width: 300px;
   margin: 110px auto 32px;
-  border: 2px solid var(--black);
+  border: 2px solid var(--color-bg);
 }
 
 .searcher button {
-  width: 5rem;
-  background-color: var(--black);
+  width: 3.125rem;
+  background-color: var(--color-bg);
   border: none;
   cursor: pointer;
 }
 
 .searcher button:hover {
-  background-color: var(--gray);
+  background-color: var(--color-surface-raised);
 }
 
 .searcher input {
-  height: 4.4rem;
+  height: 2.75rem;
   width: 100%;
-  padding-left: 1rem;
+  padding-left: 0.625rem;
   border: none;
-  font-size: 2.2rem;
+  font-size: 1.375rem;
   outline: none;
 }
 
 .searcher:focus-within {
-  outline: 3px solid var(--principal-color);
+  outline: 3px solid var(--color-accent);
 }
 
 .searcher svg {
-  width: 3rem;
+  width: 1.875rem;
 }
 
-.searcher path{
-  color: var(--white);
+.searcher path {
+  color: var(--color-text);
 }
 
 .searcherButtonClose {
-  width: 4rem;
-  color: var(--white);
+  width: 2.5rem;
+  color: var(--color-text);
   border: none;
   background: none;
   cursor: pointer;
