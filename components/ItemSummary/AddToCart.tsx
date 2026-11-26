@@ -1,4 +1,6 @@
-import React, { useState, useContext } from 'react'
+'use client'
+
+import { useState } from 'react'
 import { useCartMutations } from '@store/Cart'
 import styles from './styles.module.css'
 import { AiFillCheckCircle } from "react-icons/ai";
@@ -7,8 +9,6 @@ type AddToCartProps = {
   product: TItem
 }
 
-// Fake a server Response, we don't care on this project
-// about data persistency, but you may add it :)
 const addToCartRequest = () =>
   new Promise((resolve, reject) => {
     window.setTimeout(resolve, 600)
@@ -79,16 +79,15 @@ const AddToCart = ({ product }: AddToCartProps) => {
         </button>
       </div>
       <button className={styles.add} onClick={handleSubmit}>Añadir</button>
-      {
-      error && (
+      {error ? (
         <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
-      )}
-      {visible &&
+      ) : null}
+      {visible ? (
         <div className={styles.added}>
           Añadido
           <AiFillCheckCircle className={styles.icon}/>
         </div>
-      }
+      ) : null}
     </>
   )
 }

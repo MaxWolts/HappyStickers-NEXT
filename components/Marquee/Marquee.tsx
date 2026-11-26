@@ -1,7 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+'use client'
+
+import { useEffect, useRef, useState } from 'react';
 import styles from "./styles.module.css"
 
-const Marquee = ({ text }) => {
+type MarqueeProps = {
+  text: string
+}
+
+const Marquee = ({ text }: MarqueeProps) => {
   const marqueeRef = useRef(null);
   const [animate, setAnimate] = useState(false);
 
@@ -9,7 +15,7 @@ const Marquee = ({ text }) => {
     const marqueeElement = marqueeRef.current;
     const marqueeWidth = marqueeElement.offsetWidth;
     const containerWidth = marqueeElement.parentNode.offsetWidth;
-    const duration = marqueeWidth / 50; // Ajusta la velocidad de la animación cambiando este valor
+    const duration = marqueeWidth / 50;
 
     if (marqueeWidth > containerWidth) {
       setAnimate(true);

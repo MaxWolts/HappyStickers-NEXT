@@ -1,9 +1,13 @@
 import styles from './styles.module.css'
 
 
-const Searcher = ({setDataSearcher}) => {
-  const search = (value) => {
-    setDataSearcher(value.target.value.toLowerCase())
+type SearcherProps = {
+  setDataSearcher: (value: string) => void
+}
+
+const Searcher = ({ setDataSearcher }: SearcherProps) => {
+  const search = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setDataSearcher(event.target.value.toLowerCase())
   }
   return (
     <div className={`${styles.searcherContainer}`} id='search'>

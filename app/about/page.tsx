@@ -2,7 +2,8 @@ import Image from 'next/image'
 import Layout from '@components/Layout/Layout'
 import image from '@images/about.png'
 import styles from './styles.module.css'
-const about = () => {
+
+const AboutPage = () => {
   return (
     <Layout>
       <div className={styles.about}>
@@ -19,4 +20,4 @@ const about = () => {
   )
 }
 
-export default about
+export default AboutPage

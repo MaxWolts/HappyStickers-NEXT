@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import styles from './styles.module.css'
 import Image from 'next/image'
@@ -47,7 +49,7 @@ const Footer = () => {
       <Image className={styles.image} src={profilePic} alt='imagen de backgroun de un conejo con una taza de café'/>
 
     </footer>
-    {memeState !== 'false' &&
+    {memeState !== 'false' ?
       <div className={styles.memeContainer}>
 
         {memeState === 'firts'?  <Image className={styles.memeImage} src={memeOne} alt='bonk1'/>
@@ -55,8 +57,9 @@ const Footer = () => {
             <Image src={memeTwo} className={styles.memeImage} alt='bonk2'/>
           </>
         }
-        {memeState === 'three' && <audio src="https://res.cloudinary.com/max-wolts/video/upload/v1670534752/Bonk_Sound_Effect_x4lkjr.mp3" autoPlay={true}></audio>}
+        {memeState === 'three' ? <audio src="https://res.cloudinary.com/max-wolts/video/upload/v1670534752/Bonk_Sound_Effect_x4lkjr.mp3" autoPlay={true}></audio> : null}
       </div>
+      : null
     }
     </>
   )
