@@ -7,6 +7,8 @@ html {
   font-size: 62.5%;
   font-family: var(--font-body);
   line-height: var(--leading-normal);
+  background-color: var(--color-bg);
+  scroll-behavior: smooth;
 }
 h1,
 h2,
@@ -21,8 +23,27 @@ body {
   font-size: 1.6rem;
   max-width: 2220px;
   margin: 0 auto;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+a {
+  color: inherit;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 .body-scroll-lock {
   height: 100%;
   overflow: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
