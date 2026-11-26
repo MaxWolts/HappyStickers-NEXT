@@ -9,10 +9,9 @@
 .image {
   z-index: 0;
   position: absolute;
-  bottom: 3;
   height: 90vh;
   width: auto;
-  opacity: 0.3;
+  opacity: 0.18;
 }
 .description {
   z-index: 1;
@@ -21,6 +20,7 @@
   margin-top: 6.4rem;
   font-size: var(--text-xl);
   color: var(--color-text);
+  text-shadow: 0 2px 12px var(--color-bg);
 }
 .description h2 {
   font-size: 4.7rem;

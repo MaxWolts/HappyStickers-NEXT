@@ -31,9 +31,16 @@ const CartItemList = () => {
             <img className={styles.image} src={cartItem.image} alt="" />
             <div className={styles.text}>
               <p className={styles.name}>{cartItem.name}</p>
-              <p className={styles.price}>{cartItem.quantity} x ${cartItem.price}</p>
+              <p className={styles.price}>
+                {cartItem.quantity} x ${cartItem.price}
+              </p>
             </div>
-            <button onClick={() => removeFromCart(cartItem)}>X</button>
+            <button
+              onClick={() => removeFromCart(cartItem)}
+              aria-label={`Quitar ${cartItem.name} del carrito`}
+            >
+              X
+            </button>
           </div>
         ))}
         <div className={styles.total}>
