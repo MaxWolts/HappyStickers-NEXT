@@ -1,0 +1,4 @@
+.stage {
+  position: relative;
+  perspective: var(--perspective);
+}
