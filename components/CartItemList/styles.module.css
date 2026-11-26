@@ -55,6 +55,7 @@
 }
 .item .image {
   height: 120px;
+  width: auto;
   justify-self: center;
 }
 .without {

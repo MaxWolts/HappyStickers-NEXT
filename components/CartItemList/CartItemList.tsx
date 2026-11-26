@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import styles from './styles.module.css'
 import { useCart, useCartMutations } from '@store/Cart'
 
@@ -24,7 +25,13 @@ const CartItemList = () => {
       <h2 className={styles.title}>Carrito</h2>
       {items.map((cartItem) => (
         <div className={styles.item} key={cartItem.id}>
-          <img className={styles.image} src={cartItem.image} alt="" />
+          <Image
+            className={styles.image}
+            src={cartItem.image}
+            alt=""
+            width={120}
+            height={120}
+          />
           <div className={styles.text}>
             <p className={styles.name}>{cartItem.name}</p>
             <p className={styles.price}>

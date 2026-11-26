@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 import image from '@images/menu.png'
@@ -18,19 +19,36 @@ const Menu = ({ menuHanddler }: MenuProps) => {
   return (
     <div className={styles.effect}>
       <div className={styles.NewMenu}>
-        <img src={image.src} className={styles.image} onLoad={handdleLoadImage}></img>
-        <ul className={`${load? styles.links : styles.aux}`}>
+        <Image
+          src={image}
+          alt=""
+          className={styles.image}
+          onLoad={handdleLoadImage}
+        />
+        <ul className={`${load ? styles.links : styles.aux}`}>
           <li className={styles.topLink}>
-            <Link className={styles.link} href="/" onClick={menuHanddler}>Inicio</Link>
+            <Link className={styles.link} href="/" onClick={menuHanddler}>
+              Inicio
+            </Link>
           </li>
           <li className={styles.middleLink}>
-            <Link className={styles.link} href="/carrito" onClick={menuHanddler}>Carrito</Link>
+            <Link
+              className={styles.link}
+              href="/carrito"
+              onClick={menuHanddler}
+            >
+              Carrito
+            </Link>
           </li>
           <li className={styles.bottomLink}>
-            <Link className={styles.link} href="/about" onClick={menuHanddler}>Conocenos</Link>
+            <Link className={styles.link} href="/about" onClick={menuHanddler}>
+              Conocenos
+            </Link>
           </li>
         </ul>
-        <button className={styles.button} onClick={menuHanddler}><AiOutlineArrowRight/></button>
+        <button className={styles.button} onClick={menuHanddler}>
+          <AiOutlineArrowRight />
+        </button>
       </div>
     </div>
   )

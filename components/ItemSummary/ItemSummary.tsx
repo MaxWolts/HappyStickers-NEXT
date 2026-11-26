@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import styles from './styles.module.css'
 import AddToCart from './AddToCart'
 
@@ -10,15 +11,23 @@ function ItemSummary({ item }: ItemSummaryProps) {
     <div className={styles.summary}>
       <div className={styles.container}>
         <div className={styles.item}>
-          <img src={item.image} alt="" className={styles.image}/>
+          <Image
+            src={item.image}
+            alt={item.name}
+            width={220}
+            height={220}
+            className={styles.image}
+          />
           <div className={styles.name}>
             <p>{item.name}</p>
           </div>
         </div>
         <div className={styles.description}>
           <p>{item.description}</p>
-          <p><strong>Precio: ${item.price}</strong></p>
-          <AddToCart product={item} ></AddToCart>
+          <p>
+            <strong>Precio: ${item.price}</strong>
+          </p>
+          <AddToCart product={item}></AddToCart>
         </div>
       </div>
     </div>

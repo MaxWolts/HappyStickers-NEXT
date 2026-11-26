@@ -81,6 +81,7 @@
 .image {
   width: 40vw;
   min-width: 364px;
+  height: auto;
   position: absolute;
   bottom: 0;
   right: 0;
