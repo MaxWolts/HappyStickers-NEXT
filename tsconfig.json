@@ -16,6 +16,9 @@
       "@components/*": [
         "./components/*"
       ],
+      "@lib/*": [
+        "./lib/*"
+      ],
       "@images/*": [
         "./public/images/*"
       ]
