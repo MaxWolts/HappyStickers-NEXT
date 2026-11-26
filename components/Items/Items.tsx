@@ -4,6 +4,9 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Item from '@components/Item/Item'
 import Searcher from '@components/Searcher/Searcher'
+import FlipGrid from '@components/motion/FlipGrid'
+import Reveal from '@components/motion/Reveal'
+import Tilt from '@components/motion/Tilt'
 import styles from './styles.module.css'
 
 type ItemListProps = {
@@ -24,13 +27,17 @@ function Items({ items }: ItemListProps) {
   return (
     <>
       <Searcher setDataSearcher={setSearcher} />
-      <div className={styles.items}>
-        {filteredItems.map(({ name, id, price, image }) => (
-          <Link href={`/item/${id}`} key={id}>
-            <Item name={name} price={price} image={image} />
-          </Link>
-        ))}
-      </div>
+      <Reveal>
+        <FlipGrid layoutKey={searcher} className={styles.items}>
+          {filteredItems.map(({ name, id, price, image }) => (
+            <Link href={`/item/${id}`} key={id}>
+              <Tilt>
+                <Item name={name} price={price} image={image} />
+              </Tilt>
+            </Link>
+          ))}
+        </FlipGrid>
+      </Reveal>
     </>
   )
 }
