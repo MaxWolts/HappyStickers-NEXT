@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { useCartMutations } from '@store/Cart'
+import skewButtonStyles from '@components/SkewButton/styles.module.css'
 import styles from './styles.module.css'
 
 const CONFIRMATION_DURATION_MS = 1500
@@ -31,9 +32,10 @@ const AddToCartButton = ({ item, className }: AddToCartButtonProps) => {
     setJustAdded(true)
   }
 
+  const baseClassName = `${skewButtonStyles.button} ${skewButtonStyles.compact} ${styles.button}`
   const buttonClassName = className
-    ? `${styles.button} ${className}`
-    : styles.button
+    ? `${baseClassName} ${className}`
+    : baseClassName
 
   return (
     <button
@@ -43,7 +45,9 @@ const AddToCartButton = ({ item, className }: AddToCartButtonProps) => {
       aria-label={`Añadir ${item.name} al carrito`}
       data-added={justAdded}
     >
-      <span aria-live="polite">{justAdded ? 'Añadido' : 'Añadir'}</span>
+      <span className={skewButtonStyles.label} aria-live="polite">
+        {justAdded ? 'Añadido' : 'Añadir'}
+      </span>
     </button>
   )
 }

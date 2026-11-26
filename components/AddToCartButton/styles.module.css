@@ -1,37 +1,9 @@
 .button {
   position: relative;
   z-index: 2;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 4.4rem;
-  min-width: 4.4rem;
-  padding: 0 var(--space-4);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-text);
-  background-color: var(--color-surface-raised);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition:
-    background-color 0.2s,
-    border-color 0.2s,
-    transform 0.15s;
-}
-
-.button:hover {
-  color: var(--color-on-accent);
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.button:active {
-  transform: scale(0.96);
 }
 
 .button[data-added='true'] {
-  color: var(--color-on-accent);
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-accent);
+  background-color: var(--color-text);
 }

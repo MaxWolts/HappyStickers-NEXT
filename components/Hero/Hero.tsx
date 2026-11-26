@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ParallaxStage from '@components/motion/ParallaxStage'
 import ParallaxLayer from '@components/motion/ParallaxLayer'
+import skewButtonStyles from '@components/SkewButton/styles.module.css'
 import HeroMotion from './HeroMotion'
 import styles from './styles.module.css'
 
@@ -113,8 +114,11 @@ const Hero = ({ stickers }: HeroProps) => {
             pierde color. Elige los tuyos y pégalos donde quieras.
           </p>
           <div className={styles.actions} data-hero-fade>
-            <Link href="#catalogo" className={styles.primaryAction}>
-              Ver catálogo
+            <Link
+              href="#catalogo"
+              className={`${skewButtonStyles.button} ${styles.primaryAction}`}
+            >
+              <span className={skewButtonStyles.label}>Ver catálogo</span>
             </Link>
             <Link href="/about" className={styles.secondaryAction}>
               Nosotros

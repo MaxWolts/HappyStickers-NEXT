@@ -58,26 +58,7 @@
 }
 
 .primaryAction {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 100%;
-  min-height: 5.2rem;
-  padding: 0 var(--space-6);
-  font-weight: 600;
-  color: var(--color-on-accent);
-  text-decoration: none;
-  background-color: var(--color-accent);
-  border-radius: var(--radius-md);
-  box-shadow: 0 10px 30px rgb(224 20 76 / 0.35);
-  transition:
-    transform 0.2s,
-    box-shadow 0.2s;
-}
-
-.primaryAction:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 40px rgb(224 20 76 / 0.45);
 }
 
 .secondaryAction {

@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useCartMutations } from '@store/Cart'
+import skewButtonStyles from '@components/SkewButton/styles.module.css'
 import styles from './styles.module.css'
 import { AiFillCheckCircle } from 'react-icons/ai'
 
@@ -123,8 +124,12 @@ const AddToCart = ({ product }: AddToCartProps) => {
           <PlusIcon />
         </button>
       </div>
-      <button type="button" className={styles.add} onClick={handleSubmit}>
-        <span className={styles.addLabel}>Añadir</span>
+      <button
+        type="button"
+        className={`${skewButtonStyles.button} ${styles.add}`}
+        onClick={handleSubmit}
+      >
+        <span className={skewButtonStyles.label}>Añadir</span>
       </button>
       <div className={styles.feedback} aria-live="polite">
         {error ? <p className={styles.error}>{error}</p> : null}

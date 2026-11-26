@@ -107,7 +107,8 @@
 }
 
 .addButton {
-  width: 100%;
+  justify-self: center;
+  width: calc(100% - var(--space-4));
   align-self: end;
 }
 
