@@ -1,15 +1,24 @@
 .frame {
   overflow: clip;
-  padding-block: var(--space-6);
+  padding-block: var(--marquee-padding, var(--space-6));
 }
 
 .marquee {
   overflow: hidden;
   padding-block: var(--space-4);
+  transform: rotate(var(--marquee-rotation, -1.5deg)) scale(1.04);
+  box-shadow: var(--shadow-2);
+}
+
+.accent {
   color: var(--color-on-accent);
   background-color: var(--color-accent);
-  transform: rotate(-1.5deg) scale(1.04);
-  box-shadow: var(--shadow-2);
+}
+
+.dark {
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border-block: 2px solid var(--color-text);
 }
 
 .track {

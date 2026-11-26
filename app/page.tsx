@@ -1,5 +1,6 @@
 import Layout from '@components/Layout/Layout'
 import Hero, { type HeroSticker } from '@components/Hero/Hero'
+import CrossedMarquee from '@components/CrossedMarquee/CrossedMarquee'
 import Featured from '@components/Featured/Featured'
 import Items from '@components/Items/Items'
 import DB from '@database'
@@ -37,6 +38,7 @@ const HomePage = async () => {
   return (
     <Layout>
       <Hero stickers={heroStickers} />
+      <CrossedMarquee />
       <Featured items={featuredItems} />
       <Items items={itemList} />
     </Layout>

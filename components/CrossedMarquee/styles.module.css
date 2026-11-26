@@ -1,0 +1,17 @@
+.crossed {
+  display: grid;
+  overflow: clip;
+  --marquee-padding: var(--space-9);
+}
+
+.band {
+  grid-area: 1 / 1;
+}
+
+.accentBand {
+  --marquee-rotation: -4deg;
+}
+
+.darkBand {
+  --marquee-rotation: 4deg;
+}

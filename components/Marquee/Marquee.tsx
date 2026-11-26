@@ -9,6 +9,8 @@ const SECONDS_PER_GROUP = 18
 
 type MarqueeProps = {
   text: string
+  direction?: 'left' | 'right'
+  variant?: 'accent' | 'dark'
 }
 
 type MarqueeGroupProps = {
@@ -40,7 +42,11 @@ const MarqueeGroup = ({ text, hidden }: MarqueeGroupProps) => {
   )
 }
 
-const Marquee = ({ text }: MarqueeProps) => {
+const Marquee = ({
+  text,
+  direction = 'left',
+  variant = 'accent',
+}: MarqueeProps) => {
   const marqueeRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
 
@@ -49,22 +55,26 @@ const Marquee = ({ text }: MarqueeProps) => {
       const motionMedia = gsap.matchMedia()
 
       motionMedia.add(motionAllowedQuery, () => {
-        gsap.to(trackRef.current, {
-          xPercent: -50,
-          duration: SECONDS_PER_GROUP,
-          ease: 'none',
-          repeat: -1,
-        })
+        gsap.fromTo(
+          trackRef.current,
+          { xPercent: direction === 'left' ? 0 : -50 },
+          {
+            xPercent: direction === 'left' ? -50 : 0,
+            duration: SECONDS_PER_GROUP,
+            ease: 'none',
+            repeat: -1,
+          },
+        )
       })
 
       return () => motionMedia.revert()
     },
-    { scope: marqueeRef },
+    { scope: marqueeRef, dependencies: [direction] },
   )
 
   return (
     <div ref={marqueeRef} className={styles.frame}>
-      <div className={styles.marquee}>
+      <div className={`${styles.marquee} ${styles[variant]}`}>
         <div ref={trackRef} className={styles.track}>
           <MarqueeGroup text={text} hidden={false} />
           <MarqueeGroup text={text} hidden={true} />
