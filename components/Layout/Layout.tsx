@@ -10,7 +10,7 @@ const Layout = ({ children }: LayoutProps) => (
   <>
     <Header />
     {children}
-    <Marquee text="HappySticker siempre contigo -" />
+    <Marquee text="HappyStickers siempre contigo" />
     <Footer />
   </>
 )
