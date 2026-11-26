@@ -9,7 +9,7 @@ const RESTING_PEEL = 16
 const HINT_PEEL = 34
 const FALLING_PEEL = 120
 const FULL_PEEL = 200
-const DROP_THRESHOLD = 0.55
+const DROP_THRESHOLD = 0.35
 
 type PeelStickerProps = {
   src: string
