@@ -13,7 +13,7 @@ const Layout = ({ children }: LayoutProps) => (
   <>
     <Header />
       {children}
-    <Marquee text={"HappySticker simpre contigo -"}/>
+    <Marquee text={"HappySticker siempre contigo -"}/>
     <Footer />
   </>
 )

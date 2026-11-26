@@ -18,14 +18,12 @@ class Database {
     await randomDelay()
     return entry
   }
-  async getByName(name: string): Promise<TItem[] | null> {
-    if (!Object.prototype.hasOwnProperty.call(allData, name)) {
-      return null
-    }
+  async getByName(name: string): Promise<TItem[]> {
+    const searchName = name.toLowerCase()
     const asArray = Object.values(allData)
-    const entry = asArray.filter((item)=>item.name.includes(name))
+    const entries = asArray.filter((item) => item.name.toLowerCase().includes(searchName))
     await randomDelay()
-    return entry
+    return entries
   }
 }
 

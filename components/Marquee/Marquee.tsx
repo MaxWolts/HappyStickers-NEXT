@@ -10,7 +10,6 @@ const Marquee = ({ text }) => {
     const marqueeWidth = marqueeElement.offsetWidth;
     const containerWidth = marqueeElement.parentNode.offsetWidth;
     const duration = marqueeWidth / 50; // Ajusta la velocidad de la animación cambiando este valor
-    console.log("marqueeWidth:", marqueeWidth , "containerWidth:", containerWidth);
 
     if (marqueeWidth > containerWidth) {
       setAnimate(true);
@@ -25,14 +24,11 @@ const Marquee = ({ text }) => {
           iterations: Infinity,
         }
       );
-        console.log("sss");
 
       return () => {
         animation.cancel();
       };
     } else {
-      console.log("s");
-
       setAnimate(false);
     }
   }, [text]);

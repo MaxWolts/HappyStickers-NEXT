@@ -1,11 +1,11 @@
 import Layout from '@components/Layout/Layout'
 import Banner from '@components/Banner/Banner'
 import Items from '@components/Items/Items'
-import { server } from '../config';
+import DB from '@database'
 
 export const getStaticProps = async () => {
-  const response = await fetch(`${server}/api/items`)
-  const { data: itemList }: TAPIItemsResponse = await response.json()
+  const db = new DB()
+  const itemList = await db.getAll()
 
   return {
     props: {

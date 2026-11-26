@@ -1,11 +1,11 @@
-import { server } from '../../config'
 import { GetStaticProps } from 'next'
 import Layout from '@components/Layout/Layout'
 import ItemSummary from '@components/ItemSummary/ItemSummary'
+import DB from '@database'
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const response = await fetch(`${server}/api/items/${params.id}`)
-  const item: TItem = await response.json()
+  const db = new DB()
+  const item = await db.getById(params.id as string)
   return {
     props: {
       item,
@@ -14,8 +14,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 }
 
 export const getStaticPaths = async () => {
-  const response = await fetch(`${server}/api/items`)
-  const { data: itemList }: TAPIItemsResponse = await response.json()
+  const db = new DB()
+  const itemList = await db.getAll()
 
   const paths = itemList.map((item) => ({
     params: {

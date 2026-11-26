@@ -46,7 +46,6 @@ const AddToCart = ({ product }: AddToCartProps) => {
           setQuantity(quantity)
           setVisible(true)
           toggleMessage()
-          console.log(quantity)
         })
         .catch((err: Error) => {
           setError(`Error: ${err}` || 'Something went wrong')
