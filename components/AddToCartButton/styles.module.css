@@ -1,0 +1,9 @@
+.button {
+  position: relative;
+  z-index: 2;
+}
+
+.button[data-added='true'] {
+  color: var(--color-accent);
+  background-color: var(--color-text);
+}

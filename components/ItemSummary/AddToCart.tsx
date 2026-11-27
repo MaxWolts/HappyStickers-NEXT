@@ -1,16 +1,17 @@
-import React, { useState, useContext } from 'react'
+'use client'
+
+import { useState } from 'react'
 import { useCartMutations } from '@store/Cart'
+import skewButtonStyles from '@components/SkewButton/styles.module.css'
 import styles from './styles.module.css'
-import { AiFillCheckCircle } from "react-icons/ai";
+import { AiFillCheckCircle } from 'react-icons/ai'
 
 type AddToCartProps = {
   product: TItem
 }
 
-// Fake a server Response, we don't care on this project
-// about data persistency, but you may add it :)
 const addToCartRequest = () =>
-  new Promise((resolve, reject) => {
+  new Promise((resolve) => {
     window.setTimeout(resolve, 600)
   })
 
@@ -21,8 +22,37 @@ const validate = (quantity: number) => {
   return error
 }
 
+const MinusIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth={2.2}
+    stroke="currentColor"
+    className={styles.stepIcon}
+    aria-hidden="true"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+  </svg>
+)
+
+const PlusIcon = () => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    strokeWidth={2.2}
+    stroke="currentColor"
+    className={styles.stepIcon}
+    aria-hidden="true"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      d="M12 4.5v15m7.5-7.5h-15"
+    />
+  </svg>
+)
+
 const AddToCart = ({ product }: AddToCartProps) => {
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [quantity, setQuantity] = useState(1)
   const [visible, setVisible] = useState(false)
@@ -38,19 +68,15 @@ const AddToCart = ({ product }: AddToCartProps) => {
     const error = validate(quantity)
     setError(error)
     if (!error) {
-      setLoading(true)
       addToCartRequest()
         .then(() => {
           addToCart(product, quantity)
-          setLoading(false)
           setQuantity(quantity)
           setVisible(true)
           toggleMessage()
-          console.log(quantity)
         })
         .catch((err: Error) => {
           setError(`Error: ${err}` || 'Something went wrong')
-          setLoading(false)
         })
     }
   }
@@ -59,38 +85,65 @@ const AddToCart = ({ product }: AddToCartProps) => {
     setQuantity(parseInt(target.value, 10))
   }
 
-  const changeQuantity = (number:number) => {
-    if ((number == 1 && quantity < 25)|| quantity > 1 && number < 1)
+  const changeQuantity = (number: number) => {
+    if ((number == 1 && quantity < 25) || (quantity > 1 && number < 1))
       setQuantity(quantity + number)
   }
 
   return (
-    <>
-      <div className={styles.inputContainer}>
-        <button className={styles.less} onClick={()=>changeQuantity(-1)}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="#f9f9f9" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
-          </svg>
+    <div className={styles.purchase} data-entrance-fade>
+      <div className={styles.stepper}>
+        <button
+          type="button"
+          className={styles.step}
+          onClick={() => changeQuantity(-1)}
+          aria-label="Quitar uno"
+        >
+          <MinusIcon />
         </button>
-        <input type="number" min={1} max='25' pattern="\d*" onChange={handleChange} value={quantity} readOnly/>
-        <button className={styles.more} onClick={()=>changeQuantity(1)}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.2} stroke="#f9f9f9" className="w-6 h-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-          </svg>
+        <label htmlFor="item-quantity" className={styles.visuallyHidden}>
+          Cantidad
+        </label>
+        <input
+          id="item-quantity"
+          className={styles.quantity}
+          type="number"
+          min={1}
+          max="25"
+          pattern="\d*"
+          onChange={handleChange}
+          value={quantity}
+          readOnly
+        />
+        <button
+          type="button"
+          className={styles.step}
+          onClick={() => changeQuantity(1)}
+          aria-label="Añadir uno"
+        >
+          <PlusIcon />
         </button>
       </div>
-      <button className={styles.add} onClick={handleSubmit}>Añadir</button>
-      {
-      error && (
-        <div style={{ color: 'red', position: 'absolute' }}>{error}</div>
-      )}
-      {visible &&
-        <div className={styles.added}>
-          Añadido
-          <AiFillCheckCircle className={styles.icon}/>
-        </div>
-      }
-    </>
+      <button
+        type="button"
+        className={`${skewButtonStyles.button} ${styles.add}`}
+        onClick={handleSubmit}
+      >
+        <span className={skewButtonStyles.label}>Añadir</span>
+      </button>
+      <div className={styles.feedback} aria-live="polite">
+        {error ? <p className={styles.error}>{error}</p> : null}
+        {visible ? (
+          <p className={styles.added}>
+            Añadido
+            <AiFillCheckCircle
+              className={styles.addedIcon}
+              aria-hidden="true"
+            />
+          </p>
+        ) : null}
+      </div>
+    </div>
   )
 }
 

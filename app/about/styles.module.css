@@ -1,0 +1,150 @@
+.about {
+  position: relative;
+  overflow: clip;
+  background-color: var(--color-bg);
+}
+
+.stage {
+  display: grid;
+  gap: var(--space-7);
+  padding: var(--space-7) var(--space-gutter) var(--space-8);
+}
+
+.backdrop {
+  position: absolute;
+  inset: auto -4rem 0;
+  height: 42rem;
+  pointer-events: none;
+}
+
+.sweep {
+  position: absolute;
+  inset: 0;
+}
+
+.panel {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-accent);
+  clip-path: polygon(0% 18%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.slash,
+.halftone {
+  display: none;
+}
+
+.copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-5);
+}
+
+.title {
+  font-size: clamp(3.6rem, 5vw, 5.8rem);
+  font-weight: 400;
+  transform: rotate(-3deg);
+}
+
+.description {
+  max-width: 44ch;
+  font-size: var(--text-lg);
+  line-height: 1.55;
+  color: var(--color-text);
+}
+
+.media {
+  position: relative;
+  display: grid;
+  justify-items: center;
+}
+
+.imageDrop {
+  width: min(26rem, 60vw);
+  transform: rotate(4deg);
+}
+
+.frame {
+  background-color: var(--color-surface);
+  border: 0.6rem solid var(--color-text);
+  box-shadow: 0.6rem 0.6rem 0 #000;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 960px) {
+  .stage {
+    grid-template-columns: minmax(0, 52fr) minmax(0, 48fr);
+    grid-template-areas: 'copy media';
+    align-items: center;
+    min-height: 64rem;
+    column-gap: var(--space-7);
+    padding-block: var(--space-8) var(--space-9);
+  }
+
+  .backdrop {
+    inset: 0 -4rem;
+    height: auto;
+  }
+
+  .panel {
+    clip-path: polygon(60% 0%, 100% 0%, 100% 100%, 47% 100%);
+  }
+
+  .slash {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-bg);
+    clip-path: polygon(
+      55% 0%,
+      58% 0%,
+      52% 55%,
+      54% 57%,
+      46% 100%,
+      43% 100%,
+      50% 59%,
+      48.5% 56%
+    );
+  }
+
+  .halftone {
+    display: block;
+    position: absolute;
+    right: 4rem;
+    bottom: 0;
+    width: 38rem;
+    height: 20.8rem;
+    background-image: radial-gradient(var(--color-bg) 1.6px, transparent 1.9px);
+    background-size: 11px 11px;
+    clip-path: polygon(0% 35%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .copy {
+    grid-area: copy;
+    gap: var(--space-6);
+  }
+
+  .description {
+    font-size: var(--text-xl);
+  }
+
+  .media {
+    grid-area: media;
+  }
+
+  .imageDrop {
+    width: min(30rem, 70%);
+  }
+
+  .frame {
+    border-width: 1rem;
+    box-shadow: 1.4rem 1.4rem 0 #000;
+  }
+}

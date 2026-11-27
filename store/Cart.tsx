@@ -91,17 +91,9 @@ const getCartSubTotal = (sum: number, item: CartItemType) => {
   return sum
 }
 const getCartCount = (sum: number, item: CartItemType) => sum + item.quantity
-/**
- * Hey there insatiably brain,
- * Are you interested in this pattern where the Context values are
- * exposed without actually provinding access to the Context itself :)
- * https://kentcdodds.com/blog/how-to-use-react-context-effectively
- */
 export const useCart = () => {
   const itemsById = useContext(CartItemsContext)
   const items = Object.values(itemsById)
-  // Not familiar with Array.reduce? :)
-  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
   const count = items.reduce(getCartCount, 0)
   const subTotal = items.reduce(getCartSubTotal, 0)
 

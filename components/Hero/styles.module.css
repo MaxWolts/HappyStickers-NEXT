@@ -1,0 +1,137 @@
+.hero {
+  position: relative;
+  overflow: clip;
+  padding: var(--space-7) var(--space-gutter) var(--space-6);
+}
+
+.inner {
+  display: grid;
+  gap: var(--space-6);
+  align-items: center;
+}
+
+.copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.eyebrow {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 500;
+  color: var(--color-accent-text);
+}
+
+.title {
+  font-size: var(--text-display);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+  overflow-wrap: break-word;
+}
+
+.wordMask {
+  display: inline-block;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  vertical-align: bottom;
+}
+
+.word {
+  display: inline-block;
+}
+
+.lead {
+  max-width: 42ch;
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4) var(--space-6);
+}
+
+.primaryAction {
+  width: 100%;
+}
+
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  font-weight: 500;
+  text-underline-offset: 0.3em;
+}
+
+.secondaryAction:hover {
+  color: var(--color-accent-text);
+}
+
+.stageFrame {
+  position: relative;
+  width: 100%;
+  height: clamp(28rem, 90vw, 44rem);
+}
+
+.stage {
+  width: 100%;
+  height: 100%;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+}
+
+.backLayer {
+  opacity: 0.45;
+}
+
+.middleLayer {
+  opacity: 0.8;
+}
+
+.sticker {
+  position: absolute;
+  left: var(--slot-left);
+  top: var(--slot-top);
+  width: var(--slot-size);
+  aspect-ratio: 1;
+  transform: rotate(var(--slot-rotate));
+}
+
+.stickerImage {
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgb(0 0 0 / 0.55));
+}
+
+.frontLayer .stickerImage {
+  filter: drop-shadow(0 24px 28px rgb(0 0 0 / 0.65));
+}
+
+@media (min-width: 720px) {
+  .primaryAction {
+    width: auto;
+  }
+}
+
+@media (min-width: 960px) {
+  .hero {
+    padding-block: var(--space-6);
+  }
+
+  .inner {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    min-height: calc(100svh - 8rem);
+  }
+
+  .stageFrame {
+    height: min(72rem, 78svh);
+  }
+}

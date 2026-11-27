@@ -1,19 +1,14 @@
+'use client'
+
+import Image from 'next/image'
 import styles from './styles.module.css'
+import { useCart, useCartMutations } from '@store/Cart'
 
-import { CartItemType } from '../../store/Cart'
+const CartItemList = () => {
+  const { items } = useCart()
+  const { removeFromCart } = useCartMutations()
 
-type CartItemListProps = {
-  items: CartItemType[]
-  removeFromCart: (product: TItem) => void
-  loading?: boolean
-}
-
-const CartItemList = ({
-  items,
-  removeFromCart,
-}: CartItemListProps) => {
-
-  if (items.length === 0)
+  if (items.length === 0) {
     return (
       <div className={styles.container}>
         <p className={styles.without}>
@@ -21,30 +16,41 @@ const CartItemList = ({
         </p>
       </div>
     )
+  }
 
-  const mapCartItemsToItems = (items: CartItemType[]) =>
-    items.map((cartItem) => {
-      const { id, name, quantity, price, image } = cartItem
+  const total = items.reduce((sum, item) => sum + item.quantity, 0) * 5
 
-      return (
-        <div className={styles.item}>
-          <img className={styles.image} src={image} alt="" />
+  return (
+    <div className={styles.container}>
+      <h2 className={styles.title}>Carrito</h2>
+      {items.map((cartItem) => (
+        <div className={styles.item} key={cartItem.id}>
+          <Image
+            className={styles.image}
+            src={cartItem.image}
+            alt=""
+            width={120}
+            height={120}
+          />
           <div className={styles.text}>
-            <p className={styles.name}>{name}</p>
-            <p className={styles.price}>{quantity} x ${price}</p>
+            <p className={styles.name}>{cartItem.name}</p>
+            <p className={styles.price}>
+              {cartItem.quantity} x ${cartItem.price}
+            </p>
           </div>
-          <button onClick={() => removeFromCart(cartItem)}>X</button>
+          <button
+            onClick={() => removeFromCart(cartItem)}
+            aria-label={`Quitar ${cartItem.name} del carrito`}
+          >
+            X
+          </button>
         </div>
-      )
-    })
-
-  return <div className={styles.container}>
-    <h2 className={styles.title}>Carrito</h2>
-    {mapCartItemsToItems(items)}
-    <div className={styles.total}>
-      <p>Total: ${items.reduce((sum, item) => sum + item.quantity, 0) * 5},00</p>
+      ))}
+      <div className={styles.total}>
+        <p>Total: ${total},00</p>
+      </div>
     </div>
-  </div>
+  )
 }
 
 export default CartItemList

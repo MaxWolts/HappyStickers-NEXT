@@ -1,0 +1,55 @@
+.words {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.12em 0.3em;
+}
+
+.word {
+  display: inline-flex;
+  gap: 0.06em;
+  white-space: nowrap;
+}
+
+.letter {
+  display: inline-block;
+  padding: 0.04em 0.14em;
+  line-height: 1;
+  box-shadow: 0.3rem 0.3rem 0 #000;
+}
+
+.letter:nth-child(3n + 2) {
+  transform: rotate(5deg);
+}
+
+.letter:nth-child(4n) {
+  transform: rotate(-6deg);
+}
+
+.paper {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-bg);
+  background-color: var(--color-text);
+}
+
+.outline {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 0.04em solid var(--color-text);
+}
+
+.accent {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  color: var(--color-on-accent);
+  background-color: var(--color-accent);
+}
+
+.ink {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--color-accent);
+  background-color: var(--color-text);
+}

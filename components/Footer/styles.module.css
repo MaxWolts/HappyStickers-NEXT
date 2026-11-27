@@ -1,97 +1,119 @@
 .footer {
-  overflow: hidden;
   position: relative;
+  overflow: hidden;
+  padding: var(--space-8) var(--space-gutter) var(--space-7);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border-top: 1px solid var(--color-surface-raised);
+}
+
+.columns {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: var(--space-7);
+}
+
+.brand {
   display: flex;
   flex-direction: column;
-  padding: 3.2rem var(--global-padding-width);
-  background-color: var(--black);
-  color: var(--white);
-}
-.title {
-  z-index: 1;
-  font-size: 3vh;
-  align-self: center;
+  gap: var(--space-3);
+  max-width: 36ch;
 }
 
-.title strong {
-  font-size: 3vh;
-  color: var(--principal-color);
+.logo {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
-.description {
-  z-index: 1;
-  margin-top: 1.6rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
-  grid-gap: 1.6rem;
 
+.tagline {
+  font-size: var(--text-lg);
+  color: var(--color-text-muted);
 }
-.description p {
-  font-size: 2.2rem;
-}
-.description li {
-  position: relative;
 
-  width: fit-content;
-  margin-bottom: 1rem;
+.tagline strong {
+  color: var(--color-accent-text);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.columnTitle {
+  font-size: var(--text-base);
+  font-weight: 700;
+}
+
+.note {
+  max-width: 34ch;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
   list-style: none;
 }
-.description a {
-  display: flex;
-  gap: 1rem;
+
+.link {
+  display: inline-flex;
   align-items: center;
-  font-size: 2.2rem;
-  color: var(--white);
+  gap: var(--space-2);
+  min-height: 4.4rem;
+  font-size: var(--text-base);
+  color: var(--color-text-muted);
   text-decoration: none;
-}
-.description li:hover:after, .description button:hover {
-  width: 100%;
-}
-.description li a:hover, .description button:hover {
-  color: var(--principal-color);
-}
-.description button {
-  font-size: 2.2rem;
   background: none;
-  color: var(--white);
   border: none;
   cursor: pointer;
-}
-.icons {
-  font-size: 2.2rem;
-}
-.image {
-  z-index: 0;
-  position: absolute;
-  right: -50px;
-  top: -88px;
-  opacity: .3;
+  transition: color 0.2s;
 }
 
-@media (min-width: 796px) {
-  .description {
-    justify-items: center;
-    justify-content: center;
-  }
+.link:hover {
+  color: var(--color-accent-text);
 }
-@media (min-width: 1132px) {
+
+.icon {
+  font-size: var(--text-xl);
+}
+
+.image {
+  position: absolute;
+  z-index: 0;
+  right: -4rem;
+  bottom: -4rem;
+  width: 22rem;
+  height: auto;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+@media (min-width: 840px) {
+  .columns {
+    grid-template-columns: 2fr 1fr 1.4fr;
+    padding-right: 18rem;
+  }
+
   .image {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
 
 .memeContainer {
   z-index: 999;
   position: fixed;
-  bottom: 0;
+  inset: 0;
   display: grid;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  width: 100vw;
-  background-color: #161616b0;
+  place-items: center;
+  background-color: rgb(22 22 22 / 0.7);
 }
-.memeImage{
-  opacity: 1;
+
+.memeImage {
   height: 50vh;
   width: auto;
 }

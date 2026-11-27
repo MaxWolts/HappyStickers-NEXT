@@ -1,17 +1,27 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "baseUrl": ".",
     "paths": {
-      "@store*": ["store/*"],
-      "@database": ["database/db.ts"],
-      "@components/*": ["components/*"],
-      "@images/*": ["public/images/*"],
+      "@store/*": [
+        "./store/*"
+      ],
+      "@database": [
+        "./database/db.ts"
+      ],
+      "@components/*": [
+        "./components/*"
+      ],
+      "@lib/*": [
+        "./lib/*"
+      ],
+      "@images/*": [
+        "./public/images/*"
+      ]
     },
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,15 +31,22 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve"
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

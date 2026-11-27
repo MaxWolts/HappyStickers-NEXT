@@ -1,0 +1,54 @@
+:root {
+  --color-bg: #161616;
+  --color-surface: #1f1f1f;
+  --color-surface-raised: #2a2a2a;
+  --color-border: #5a5a5a;
+  --color-text: #f9f9f9;
+  --color-text-muted: #b5b5b5;
+  --color-accent: #e0144c;
+  --color-accent-text: #ff7a9c;
+  --color-on-accent: #ffffff;
+
+  --font-heading: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+
+  --text-xs: 1.2rem;
+  --text-sm: 1.4rem;
+  --text-base: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --text-2xl: 2.4rem;
+  --text-3xl: 3.2rem;
+  --text-4xl: 4rem;
+  --text-5xl: 5.6rem;
+  --text-display: clamp(4.8rem, 8vw, 9.6rem);
+
+  --leading-tight: 1.1;
+  --leading-normal: 1.5;
+
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1.2rem;
+  --space-4: 1.6rem;
+  --space-5: 2.4rem;
+  --space-6: 3.2rem;
+  --space-7: 4.8rem;
+  --space-8: 6.4rem;
+  --space-9: 9.6rem;
+  --space-10: 12.8rem;
+  --space-gutter: 5%;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-pill: 999px;
+
+  --shadow-1: 0 2px 6px rgb(0 0 0 / 0.25);
+  --shadow-2: 0 8px 24px rgb(0 0 0 / 0.35);
+  --shadow-3: 0 20px 60px rgb(0 0 0 / 0.45);
+
+  --depth-1: 1;
+  --depth-2: 2;
+  --depth-3: 3;
+  --perspective: 1000px;
+}
