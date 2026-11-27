@@ -196,11 +196,14 @@ const PeelSticker = ({ src, alt, sizes }: PeelStickerProps) => {
           ref={buttonRef}
           type="button"
           className={styles.button}
-          disabled={isPeeled}
+          aria-disabled={isPeeled}
         >
           <PeelIcon />
           {isPeeled ? 'Sticker despegado' : 'Despegar sticker'}
         </button>
+        <p className={styles.visuallyHidden} role="status">
+          {isPeeled ? 'Sticker despegado' : ''}
+        </p>
       </div>
     </div>
   )

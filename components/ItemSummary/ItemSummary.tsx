@@ -61,7 +61,7 @@ function ItemSummary({ item }: ItemSummaryProps) {
         </div>
 
         <div className={styles.info}>
-          <h1 className={styles.name} aria-label={item.name}>
+          <h1 className={styles.name}>
             <CutoutLetters text={item.name} />
           </h1>
           <p className={styles.price} data-entrance-pop>

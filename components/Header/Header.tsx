@@ -46,7 +46,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <Link href="/" className={styles.logo} aria-label="HappyStickers">
+      <Link href="/" className={styles.logo}>
         <CutoutLetters text="HappyStickers" className={styles.logoLetters} />
       </Link>
       <nav className={styles.nav} aria-label="Principal">

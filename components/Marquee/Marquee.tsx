@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import { gsap, useGSAP, motionAllowedQuery } from '@lib/gsap'
 import styles from './styles.module.css'
 
@@ -11,6 +11,7 @@ type MarqueeProps = {
   text: string
   direction?: 'left' | 'right'
   variant?: 'accent' | 'dark'
+  paused: boolean
 }
 
 type MarqueeGroupProps = {
@@ -46,16 +47,24 @@ const Marquee = ({
   text,
   direction = 'left',
   variant = 'accent',
+  paused,
 }: MarqueeProps) => {
   const marqueeRef = useRef<HTMLDivElement>(null)
   const trackRef = useRef<HTMLDivElement>(null)
+  const tweenRef = useRef<gsap.core.Tween | null>(null)
+  const pausedRef = useRef(paused)
+
+  useEffect(() => {
+    pausedRef.current = paused
+    tweenRef.current?.paused(paused)
+  }, [paused])
 
   useGSAP(
     () => {
       const motionMedia = gsap.matchMedia()
 
       motionMedia.add(motionAllowedQuery, () => {
-        gsap.fromTo(
+        tweenRef.current = gsap.fromTo(
           trackRef.current,
           { xPercent: direction === 'left' ? 0 : -50 },
           {
@@ -63,8 +72,13 @@ const Marquee = ({
             duration: SECONDS_PER_GROUP,
             ease: 'none',
             repeat: -1,
+            paused: pausedRef.current,
           },
         )
+
+        return () => {
+          tweenRef.current = null
+        }
       })
 
       return () => motionMedia.revert()

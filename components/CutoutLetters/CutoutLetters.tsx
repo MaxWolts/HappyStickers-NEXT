@@ -37,21 +37,24 @@ const CutoutLetters = ({ text, className }: CutoutLettersProps) => {
     : styles.words
 
   return (
-    <span className={wordsClassName} aria-hidden="true">
-      {words.map((letters, wordIndex) => (
-        <span key={wordIndex} className={styles.word}>
-          {letters.map((letter) => (
-            <span
-              key={letter.position}
-              className={`${styles.letter} ${pickLetterStyle(letter.position)}`}
-              data-cutout-letter
-            >
-              {letter.character}
-            </span>
-          ))}
-        </span>
-      ))}
-    </span>
+    <>
+      <span className={styles.visuallyHidden}>{text}</span>
+      <span className={wordsClassName} aria-hidden="true">
+        {words.map((letters, wordIndex) => (
+          <span key={wordIndex} className={styles.word}>
+            {letters.map((letter) => (
+              <span
+                key={letter.position}
+                className={`${styles.letter} ${pickLetterStyle(letter.position)}`}
+                data-cutout-letter
+              >
+                {letter.character}
+              </span>
+            ))}
+          </span>
+        ))}
+      </span>
+    </>
   )
 }
 

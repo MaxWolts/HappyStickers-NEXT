@@ -175,12 +175,21 @@
   background-color: var(--color-accent);
 }
 
+.step[aria-disabled='true'] {
+  color: var(--color-text-muted);
+  background-color: var(--color-surface-raised);
+  cursor: default;
+}
+
 .stepIcon {
   width: 2rem;
   height: 2rem;
 }
 
 .quantity {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 5.6rem;
   min-height: 4.4rem;
   font-size: var(--text-base);
@@ -190,13 +199,6 @@
   background-color: var(--color-bg);
   border: 1px solid var(--color-border);
   border-inline: 0;
-  appearance: textfield;
-}
-
-.quantity::-webkit-inner-spin-button,
-.quantity::-webkit-outer-spin-button {
-  appearance: none;
-  margin: 0;
 }
 
 .visuallyHidden {

@@ -1,0 +1,28 @@
+.skipLink {
+  z-index: 20;
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  min-height: 4.4rem;
+  padding: var(--space-2) var(--space-4);
+  font-weight: 700;
+  color: var(--color-on-accent);
+  text-decoration: none;
+  background-color: var(--color-accent);
+  box-shadow: 0.3rem 0.3rem 0 #000;
+  transform: translateY(-200%);
+}
+
+.skipLink:focus {
+  transform: none;
+}
+
+.skipLink:focus-visible {
+  outline-color: var(--color-text);
+}
+
+.main:focus {
+  outline: none;
+}

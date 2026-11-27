@@ -14,9 +14,12 @@ import memeOne from '@images/1.jpg'
 import memeTwo from '@images/2.jpg'
 import styles from './styles.module.css'
 
+const REDUCED_MOTION_QUERY = '(prefers-reduced-motion: reduce)'
+
 const Footer = () => {
   const [memeState, setMemeState] = useState('false')
   const activateMeme = () => {
+    if (window.matchMedia(REDUCED_MOTION_QUERY).matches) return
     setMemeState('firts')
     setTimeout(() => {
       setMemeState('second')

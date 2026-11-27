@@ -6,6 +6,9 @@ import skewButtonStyles from '@components/SkewButton/styles.module.css'
 import styles from './styles.module.css'
 import { AiFillCheckCircle } from 'react-icons/ai'
 
+const MIN_QUANTITY = 1
+const MAX_QUANTITY = 25
+
 type AddToCartProps = {
   product: TItem
 }
@@ -81,45 +84,43 @@ const AddToCart = ({ product }: AddToCartProps) => {
     }
   }
 
-  const handleChange = ({ target }: React.ChangeEvent<HTMLInputElement>) => {
-    setQuantity(parseInt(target.value, 10))
+  const isAtMin = quantity <= MIN_QUANTITY
+  const isAtMax = quantity >= MAX_QUANTITY
+
+  const decreaseQuantity = () => {
+    if (isAtMin) return
+    setQuantity(quantity - 1)
   }
 
-  const changeQuantity = (number: number) => {
-    if ((number == 1 && quantity < 25) || (quantity > 1 && number < 1))
-      setQuantity(quantity + number)
+  const increaseQuantity = () => {
+    if (isAtMax) return
+    setQuantity(quantity + 1)
   }
 
   return (
-    <div className={styles.purchase} data-entrance-fade>
+    <div className={styles.purchase} data-entrance-fade data-sticky-purchase>
       <div className={styles.stepper}>
         <button
           type="button"
           className={styles.step}
-          onClick={() => changeQuantity(-1)}
+          onClick={decreaseQuantity}
           aria-label="Quitar uno"
+          aria-disabled={isAtMin}
         >
           <MinusIcon />
         </button>
         <label htmlFor="item-quantity" className={styles.visuallyHidden}>
           Cantidad
         </label>
-        <input
-          id="item-quantity"
-          className={styles.quantity}
-          type="number"
-          min={1}
-          max="25"
-          pattern="\d*"
-          onChange={handleChange}
-          value={quantity}
-          readOnly
-        />
+        <output id="item-quantity" className={styles.quantity}>
+          {quantity}
+        </output>
         <button
           type="button"
           className={styles.step}
-          onClick={() => changeQuantity(1)}
+          onClick={increaseQuantity}
           aria-label="Añadir uno"
+          aria-disabled={isAtMax}
         >
           <PlusIcon />
         </button>

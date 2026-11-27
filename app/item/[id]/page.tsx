@@ -46,10 +46,10 @@ export const generateMetadata = async ({
   const item = await db.getById(id)
 
   if (item == null) {
-    return { title: 'HappyStickers' }
+    return {}
   }
 
-  return { title: `${item.name} | HappyStickers` }
+  return { title: item.name }
 }
 
 const ItemPage = async ({ params }: ItemPageProps) => {

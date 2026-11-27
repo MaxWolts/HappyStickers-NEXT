@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
 import Layout from '@components/Layout/Layout'
@@ -11,6 +12,10 @@ import image from '@images/about.png'
 import styles from './styles.module.css'
 
 const TITLE = 'Quiénes somos'
+
+export const metadata: Metadata = {
+  title: 'Nosotros',
+}
 
 const AboutPage = () => {
   return (
@@ -33,7 +38,7 @@ const AboutPage = () => {
             </ParallaxLayer>
 
             <div className={styles.copy}>
-              <h1 className={styles.title} aria-label={TITLE}>
+              <h1 className={styles.title}>
                 <CutoutLetters text={TITLE} />
               </h1>
               <p className={styles.description} data-entrance-fade>

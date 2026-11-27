@@ -18,7 +18,10 @@ const bodyFont = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'HappyStickers',
+  title: {
+    default: 'HappyStickers',
+    template: '%s | HappyStickers',
+  },
   icons: {
     shortcut: '/images/favicon.ico',
   },

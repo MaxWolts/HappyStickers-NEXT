@@ -13,7 +13,9 @@ const STICKER_NAME = 'Psyduck'
 const STICKER_SIZES = '(min-width: 960px) 380px, 72vw'
 
 export const metadata: Metadata = {
-  title: TITLE,
+  title: {
+    absolute: `${TITLE} | HappyStickers`,
+  },
 }
 
 const NotFoundPage = async () => {
@@ -38,7 +40,7 @@ const NotFoundPage = async () => {
             <p className={styles.eyebrow} data-entrance-fade>
               Error 404
             </p>
-            <h1 className={styles.title} aria-label={TITLE}>
+            <h1 className={styles.title}>
               <CutoutLetters text={TITLE} />
             </h1>
             <p className={styles.description} data-entrance-fade>
@@ -56,7 +58,7 @@ const NotFoundPage = async () => {
           </div>
 
           <div className={styles.media}>
-            <div className={styles.code} data-entrance-drop>
+            <div className={styles.code} data-entrance-drop aria-hidden="true">
               <CutoutLetters text="404" />
             </div>
             {sticker ? (

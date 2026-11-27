@@ -101,10 +101,19 @@
   outline-color: var(--color-text);
 }
 
-.button:disabled {
+.button[aria-disabled='true'] {
   color: var(--color-text-muted);
   border-color: var(--color-border);
   cursor: default;
+}
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .buttonIcon {
