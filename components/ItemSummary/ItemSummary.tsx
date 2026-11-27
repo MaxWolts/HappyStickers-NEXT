@@ -28,7 +28,7 @@ const BackIcon = () => (
 
 function ItemSummary({ item }: ItemSummaryProps) {
   return (
-    <section className={styles.summary}>
+    <section className={styles.summary} data-fly-scope>
       <DiagonalEntrance className={styles.stage}>
         <div className={styles.backdrop} data-entrance-sweep aria-hidden="true">
           <div className={styles.panel} />
@@ -54,6 +54,7 @@ function ItemSummary({ item }: ItemSummaryProps) {
                   sizes="(min-width: 960px) 30vw, 60vw"
                   preload
                   className={styles.image}
+                  data-fly-source
                 />
               </div>
             </Tilt>

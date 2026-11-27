@@ -220,7 +220,6 @@
   bottom: calc(100% + var(--space-2));
 }
 
-.added,
 .error {
   display: flex;
   align-items: center;
@@ -232,18 +231,8 @@
   border-radius: var(--radius-md);
 }
 
-.added {
-  color: var(--color-text);
-}
-
 .error {
   color: var(--color-accent-text);
-}
-
-.addedIcon {
-  width: 2.4rem;
-  height: 2.4rem;
-  color: rgb(96 227 96);
 }
 
 @media (min-width: 720px) {

@@ -1,11 +1,11 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import type { MouseEvent } from 'react'
 import { useCartMutations } from '@store/Cart'
 import skewButtonStyles from '@components/SkewButton/styles.module.css'
+import AddButtonLabel from './AddButtonLabel'
+import { useAddToCartFeedback } from './useAddToCartFeedback'
 import styles from './styles.module.css'
-
-const CONFIRMATION_DURATION_MS = 1500
 
 type AddToCartButtonProps = {
   item: TItem
@@ -14,22 +14,11 @@ type AddToCartButtonProps = {
 
 const AddToCartButton = ({ item, className }: AddToCartButtonProps) => {
   const { addToCart } = useCartMutations()
-  const [justAdded, setJustAdded] = useState(false)
+  const { isAdded, showAdded } = useAddToCartFeedback()
 
-  useEffect(() => {
-    if (!justAdded) {
-      return
-    }
-    const timeoutId = window.setTimeout(
-      () => setJustAdded(false),
-      CONFIRMATION_DURATION_MS,
-    )
-    return () => window.clearTimeout(timeoutId)
-  }, [justAdded])
-
-  const handleAdd = () => {
+  const handleAdd = (event: MouseEvent<HTMLButtonElement>) => {
     addToCart(item)
-    setJustAdded(true)
+    showAdded(event.currentTarget)
   }
 
   const baseClassName = `${skewButtonStyles.button} ${skewButtonStyles.compact} ${styles.button}`
@@ -43,10 +32,11 @@ const AddToCartButton = ({ item, className }: AddToCartButtonProps) => {
       className={buttonClassName}
       onClick={handleAdd}
       aria-label={`Añadir ${item.name} al carrito`}
-      data-added={justAdded}
+      data-added={isAdded}
     >
-      <span className={skewButtonStyles.label} aria-live="polite">
-        {justAdded ? 'Añadido' : 'Añadir'}
+      <AddButtonLabel isAdded={isAdded} />
+      <span className={styles.visuallyHidden} aria-live="polite">
+        {isAdded ? 'Añadido' : ''}
       </span>
     </button>
   )

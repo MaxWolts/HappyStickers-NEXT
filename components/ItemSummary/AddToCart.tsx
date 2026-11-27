@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, type MouseEvent } from 'react'
 import { useCartMutations } from '@store/Cart'
 import skewButtonStyles from '@components/SkewButton/styles.module.css'
+import AddButtonLabel from '@components/AddToCartButton/AddButtonLabel'
+import { useAddToCartFeedback } from '@components/AddToCartButton/useAddToCartFeedback'
 import styles from './styles.module.css'
-import { AiFillCheckCircle } from 'react-icons/ai'
 
 const MIN_QUANTITY = 1
 const MAX_QUANTITY = 25
@@ -58,25 +59,18 @@ const PlusIcon = () => (
 const AddToCart = ({ product }: AddToCartProps) => {
   const [error, setError] = useState('')
   const [quantity, setQuantity] = useState(1)
-  const [visible, setVisible] = useState(false)
   const { addToCart } = useCartMutations()
+  const { isAdded, showAdded } = useAddToCartFeedback()
 
-  const toggleMessage = () => {
-    setTimeout(() => {
-      setVisible(false)
-    }, 1500)
-  }
-
-  const handleSubmit = async () => {
+  const handleSubmit = (event: MouseEvent<HTMLButtonElement>) => {
+    const trigger = event.currentTarget
     const error = validate(quantity)
     setError(error)
     if (!error) {
       addToCartRequest()
         .then(() => {
           addToCart(product, quantity)
-          setQuantity(quantity)
-          setVisible(true)
-          toggleMessage()
+          showAdded(trigger)
         })
         .catch((err: Error) => {
           setError(`Error: ${err}` || 'Something went wrong')
@@ -129,20 +123,14 @@ const AddToCart = ({ product }: AddToCartProps) => {
         type="button"
         className={`${skewButtonStyles.button} ${styles.add}`}
         onClick={handleSubmit}
+        aria-label={`Añadir ${product.name} al carrito`}
+        data-added={isAdded}
       >
-        <span className={skewButtonStyles.label}>Añadir</span>
+        <AddButtonLabel isAdded={isAdded} />
       </button>
       <div className={styles.feedback} aria-live="polite">
         {error ? <p className={styles.error}>{error}</p> : null}
-        {visible ? (
-          <p className={styles.added}>
-            Añadido
-            <AiFillCheckCircle
-              className={styles.addedIcon}
-              aria-hidden="true"
-            />
-          </p>
-        ) : null}
+        {isAdded ? <p className={styles.visuallyHidden}>Añadido</p> : null}
       </div>
     </div>
   )

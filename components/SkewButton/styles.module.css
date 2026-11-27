@@ -34,6 +34,11 @@
   transform: skewX(-12deg) scale(0.96);
 }
 
+.button[data-added='true'] {
+  color: var(--color-accent);
+  background-color: var(--color-text);
+}
+
 .button:focus-visible {
   outline-color: var(--color-text);
 }

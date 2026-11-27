@@ -1,0 +1,17 @@
+.clone {
+  z-index: 30;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  width: 6.4rem;
+  height: 6.4rem;
+  padding: 0.6rem;
+  object-fit: contain;
+  background-color: var(--color-bg);
+  border: 0.2rem solid var(--color-text);
+  border-radius: var(--radius-lg);
+  box-shadow: 0.3rem 0.3rem 0 #000;
+  pointer-events: none;
+  visibility: hidden;
+}

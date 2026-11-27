@@ -16,7 +16,7 @@ const Item = ({ item, imageSizes, className }: ItemProps) => {
   const cardClassName = className ? `${styles.card} ${className}` : styles.card
 
   return (
-    <article className={cardClassName}>
+    <article className={cardClassName} data-fly-scope>
       <Tilt className={styles.sticker}>
         <Link
           href={detailHref}
@@ -30,6 +30,7 @@ const Item = ({ item, imageSizes, className }: ItemProps) => {
             fill
             sizes={imageSizes}
             className={styles.image}
+            data-fly-source
           />
         </Link>
       </Tilt>

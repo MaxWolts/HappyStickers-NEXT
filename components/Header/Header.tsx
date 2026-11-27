@@ -62,6 +62,7 @@ const Header = () => {
           href="/carrito"
           className={styles.cart}
           aria-label={describeCart(cartCount)}
+          data-cart-target
         >
           <CartIcon />
           {cartCount > 0 ? (
@@ -72,6 +73,7 @@ const Header = () => {
                   : styles.count
               }
               aria-hidden="true"
+              data-cart-badge
             >
               {cartCount > 99 ? "99+" : cartCount}
             </span>
