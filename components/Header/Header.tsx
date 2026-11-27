@@ -65,8 +65,15 @@ const Header = () => {
         >
           <CartIcon />
           {cartCount > 0 ? (
-            <span className={styles.count} aria-hidden="true">
-              {cartCount}
+            <span
+              className={
+                cartCount >= 10
+                  ? `${styles.count} ${styles.countWide}`
+                  : styles.count
+              }
+              aria-hidden="true"
+            >
+              {cartCount > 99 ? "99+" : cartCount}
             </span>
           ) : null}
         </Link>

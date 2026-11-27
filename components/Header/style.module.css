@@ -181,6 +181,18 @@
   );
 }
 
+.countWide {
+  top: -0.7rem;
+  right: -1rem;
+  width: auto;
+  min-width: 2.8rem;
+  height: 2.2rem;
+  padding-inline: 0.5rem;
+  letter-spacing: -0.02em;
+  clip-path: polygon(0% 18%, 12% 0%, 90% 6%, 100% 40%, 94% 100%, 8% 88%);
+  rotate: -6deg;
+}
+
 .menu {
   flex-direction: column;
   gap: 0.6rem;
