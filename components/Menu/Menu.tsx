@@ -251,28 +251,40 @@ const MenuOverlay = ({ open, onClose }: MenuProps) => {
 
         <nav className={styles.nav} aria-label="Menú">
           <ul className={styles.list}>
-            {MENU_LINKS.map((menuLink) => (
-              <li key={menuLink.href} className={styles.item} data-menu-item>
-                <Link
-                  href={menuLink.href}
-                  className={styles.link}
-                  onClick={onClose}
-                  aria-current={pathname === menuLink.href ? 'page' : undefined}
-                  aria-label={
-                    menuLink.href === CART_HREF
-                      ? describeCart(cartCount)
-                      : undefined
-                  }
-                >
-                  {menuLink.label}
-                  {menuLink.href === CART_HREF && cartCount > 0 ? (
-                    <span className={styles.badge} aria-hidden="true">
-                      {cartCount}
-                    </span>
-                  ) : null}
-                </Link>
-              </li>
-            ))}
+            {MENU_LINKS.map((menuLink) => {
+              const isCartLink = menuLink.href === CART_HREF
+              const showBadge = isCartLink ? cartCount > 0 : false
+
+              return (
+                <li key={menuLink.href} className={styles.item} data-menu-item>
+                  <Link
+                    href={menuLink.href}
+                    className={styles.link}
+                    onClick={onClose}
+                    aria-current={
+                      pathname === menuLink.href ? 'page' : undefined
+                    }
+                    aria-label={
+                      isCartLink ? describeCart(cartCount) : undefined
+                    }
+                  >
+                    {menuLink.label}
+                    {showBadge ? (
+                      <span
+                        className={
+                          cartCount >= 10
+                            ? `${styles.badge} ${styles.badgeWide}`
+                            : styles.badge
+                        }
+                        aria-hidden="true"
+                      >
+                        {cartCount > 99 ? '99+' : cartCount}
+                      </span>
+                    ) : null}
+                  </Link>
+                </li>
+              )
+            })}
           </ul>
         </nav>
       </div>
